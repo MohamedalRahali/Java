@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="gui.ModifyEventController" prefWidth="600" prefHeight="500" style="-fx-background-color: #5e3a3a;">
+    <VBox alignment="TOP_CENTER" spacing="15" AnchorPane.leftAnchor="30" AnchorPane.rightAnchor="30" AnchorPane.topAnchor="20">
+
+        <Label text="Modifier l'Événement" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+
+        <TextField fx:id="titleField" promptText="Titre"
+                   style="-fx-background-radius: 10; -fx-padding: 8; -fx-background-color: white; -fx-text-fill: black;"/>
+
+        <DatePicker fx:id="datePicker"
+                    style="-fx-background-radius: 10; -fx-padding: 8; -fx-background-color: white; -fx-text-fill: black;"/>
+
+        <TextArea fx:id="descriptionArea" promptText="Description" prefRowCount="3"
+                  style="-fx-background-radius: 10; -fx-padding: 8; -fx-background-color: white; -fx-text-fill: black;"/>
+
+        <TextField fx:id="lieuxField" promptText="Lieu"
+                   style="-fx-background-radius: 10; -fx-padding: 8; -fx-background-color: white; -fx-text-fill: black;"/>
+
+        <TextField fx:id="statusField" promptText="Statut"
+                   style="-fx-background-radius: 10; -fx-padding: 8; -fx-background-color: white; -fx-text-fill: black;"/>
+
+        <TextField fx:id="dureeField" promptText="Durée"
+                   style="-fx-background-radius: 10; -fx-padding: 8; -fx-background-color: white; -fx-text-fill: black;"/>
+
+        <Spinner fx:id="nbPlaceSpinner" style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: black;">
+            <valueFactory>
+                <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="1000" initialValue="0"/>
+            </valueFactory>
+        </Spinner>
+
+        <Button text="✅ Mettre à jour" onAction="#updateEvent"
+                style="-fx-background-color: #ff7043; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 10 20;"/>
+    </VBox>
+</AnchorPane>

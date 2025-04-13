@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.DropShadow?>
+<?import java.lang.String?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.CreateEventController"
+            prefHeight="620.0" prefWidth="800.0"
+            style="-fx-background-color: linear-gradient(to bottom right, #2d1f17, #4d3428);">
+
+    <children>
+        <!-- En-tête -->
+        <VBox alignment="CENTER" layoutX="0.0" layoutY="20.0" prefWidth="800.0" spacing="10.0">
+            <ImageView fitHeight="80.0" fitWidth="80.0" preserveRatio="true">
+                <image>
+                    <Image url="@/images/art_logo.png"/>
+                </image>
+                <effect>
+                    <DropShadow color="#f9c89b" radius="10.0" spread="0.2"/>
+                </effect>
+            </ImageView>
+
+            <Label text="🎨 Créer un Événement"
+                   style="-fx-text-fill: #f9c89b; -fx-padding: 10 0 20 0;">
+                <font>
+                    <Font name="Georgia Bold" size="28.0"/>
+                </font>
+                <effect>
+                    <DropShadow color="#00000080" radius="5.0" spread="0.1"/>
+                </effect>
+            </Label>
+        </VBox>
+
+        <!-- Formulaire stylisé -->
+        <VBox alignment="CENTER" layoutX="200.0" layoutY="140.0" prefWidth="400.0" spacing="12.0">
+            <TextField fx:id="titleField" promptText="Titre de l'événement"
+                       style="-fx-background-color: #fff3e0;
+                              -fx-background-radius: 10;
+                              -fx-padding: 10;
+                              -fx-font-size: 14px;"/>
+
+            <DatePicker fx:id="datePicker" promptText="Date"
+                        style="-fx-background-color: #fff3e0;
+                               -fx-background-radius: 10;
+                               -fx-padding: 10;
+                               -fx-font-size: 14px;"/>
+
+            <TextField fx:id="lieuxField" promptText="Lieu"
+                       style="-fx-background-color: #fff3e0;
+                              -fx-background-radius: 10;
+                              -fx-padding: 10;
+                              -fx-font-size: 14px;"/>
+
+            <TextArea fx:id="descriptionArea" prefRowCount="3" promptText="Description"
+                      style="-fx-background-color: #fff3e0;
+                             -fx-background-radius: 10;
+                             -fx-padding: 10;
+                             -fx-font-size: 14px;"/>
+
+            <TextField fx:id="dureeField" promptText="Durée"
+                       style="-fx-background-color: #fff3e0;
+                              -fx-background-radius: 10;
+                              -fx-padding: 10;
+                              -fx-font-size: 14px;"/>
+
+            <TextField fx:id="nbPlacesField" promptText="Nombre de places disponibles"
+                       style="-fx-background-color: #fff3e0;
+                              -fx-background-radius: 10;
+                              -fx-padding: 10;
+                              -fx-font-size: 14px;"/>
+
+            <ChoiceBox fx:id="statusChoiceBox"
+                       style="-fx-background-color: #fff3e0;
+                              -fx-background-radius: 10;
+                              -fx-padding: 5;
+                              -fx-font-size: 14px;"/>
+
+            <Button text="✨ Créer"
+                    onAction="#createEvent"
+                    prefHeight="50.0" prefWidth="200.0"
+                    style="-fx-background-color: #e1701a;
+                           -fx-text-fill: #fff3e0;
+                           -fx-font-size: 16px;
+                           -fx-background-radius: 10px;
+                           -fx-font-weight: bold;
+                           -fx-cursor: hand;">
+                <effect>
+                    <DropShadow color="#00000080" radius="6.0" spread="0.1"/>
+                </effect>
+                <styleClass>
+                    <String fx:value="animated-button"/>
+                </styleClass>
+            </Button>
+        </VBox>
+
+
+    </children>
+
+    <!-- Styles -->
+    <style>
+        .root {
+        -fx-font-family: 'Georgia', serif;
+        }
+
+        .animated-button:hover {
+        -fx-scale-x: 1.05;
+        -fx-scale-y: 1.05;
+        -fx-effect: dropshadow(gaussian, rgba(249, 200, 155, 0.6), 15, 0.3, 0, 0);
+        }
+
+        .animated-button:pressed {
+        -fx-scale-x: 0.98;
+        -fx-scale-y: 0.98;
+        -fx-opacity: 0.9;
+        }
+    </style>
+</AnchorPane>
