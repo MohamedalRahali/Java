@@ -29,6 +29,9 @@ public class Produit {
         this.image = image;
     }
 
+    public Produit(int id, String titre, String description, int artisteId, float prix, String statut, Date dateCreation, Categorie categorie, String image) {
+    }
+
     // Getters et Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }

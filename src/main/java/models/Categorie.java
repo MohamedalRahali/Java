@@ -13,6 +13,12 @@ public class Categorie {
         this.description = description;
     }
 
+    public Categorie(int categorieId, String description) {
+    }
+
+    public Categorie(int id, String libelle, String description) {
+    }
+
     // Getters et Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:controller="controller.ListProduitController"
+      xmlns:fx="http://javafx.com/fxml" alignment="center" spacing="10">
+    <TableView fx:id="produitTable">
+        <columns>
+            <TableColumn text="ID" fx:id="idColumn"/>
+            <TableColumn text="Titre" fx:id="titreColumn"/>
+            <TableColumn text="Description" fx:id="descriptionColumn"/>
+            <TableColumn text="Artiste ID" fx:id="artisteIdColumn"/>
+            <TableColumn text="Prix" fx:id="prixColumn"/>
+            <TableColumn text="Statut" fx:id="statutColumn"/>
+            <TableColumn text="Date de Création" fx:id="dateCreationColumn"/>
+            <TableColumn text="Catégorie ID" fx:id="categorieIdColumn"/>
+            <TableColumn text="Image" fx:id="imageColumn"/>
+        </columns>
+    </TableView>
+</VBox>
