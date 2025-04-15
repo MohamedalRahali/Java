@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      spacing="20"
+      style="-fx-padding: 20; -fx-background-color: #f5f5f5;">
+
+    <Label text="Liste des Blogs"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <TableView fx:id="blogTable" style="-fx-font-size: 14px;">
+        <columns>
+            <TableColumn fx:id="colTitre" text="Titre" prefWidth="150"/>
+            <TableColumn fx:id="colDescr" text="Description" prefWidth="250"/>
+            <TableColumn fx:id="colDateCrea" text="Date Création" prefWidth="120"/>
+            <TableColumn fx:id="colDatePub" text="Date Publication" prefWidth="120"/>
+            <TableColumn fx:id="colType" text="Type" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Modifier" onAction="#handleEditBlog"
+                style="-fx-font-size: 14px; -fx-pref-width: 100px;"/>
+        <Button text="Supprimer" onAction="#handleDeleteBlog"
+                style="-fx-font-size: 14px; -fx-pref-width: 100px;"/>
+    </HBox>
+
+    <Button text="Retour à l'accueil" onAction="#goBackToHome"
+            style="-fx-font-size: 12px; -fx-pref-width: 150px;"/>
+</VBox>
