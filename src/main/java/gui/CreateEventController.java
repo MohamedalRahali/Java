@@ -1,12 +1,14 @@
 package gui;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import models.Event;
-import Services.EventService;
+import javafx.stage.Stage;
+
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.regex.Pattern;
 
 public class CreateEventController {
 
@@ -14,96 +16,46 @@ public class CreateEventController {
     @FXML private DatePicker datePicker;
     @FXML private TextArea descriptionArea;
     @FXML private ChoiceBox<String> statusChoiceBox;
-
-    private final EventService service = new EventService();
+    @FXML private Button retourButton;
 
     @FXML
-    private void initialize() {
+    public void initialize() {
         statusChoiceBox.getItems().addAll("Pending", "Confirmed", "Cancelled");
         statusChoiceBox.setValue("Pending");
     }
 
     @FXML
     private void createEvent() {
-        try {
-            if (!validateFields()) return;
-
-            Event e = new Event(
-                    titleField.getText().trim(),
-                    Date.valueOf(datePicker.getValue()),
-                    descriptionArea.getText().trim(),
-                    lieuxField.getText().trim(),
-                    statusChoiceBox.getValue(),
-                    dureeField.getText().trim(),
-                    Integer.parseInt(nbPlacesField.getText().trim())
-            );
-
-            service.ajouter(e);
-            showAlert(Alert.AlertType.INFORMATION, "Succès", "Événement créé avec succès");
-            clearFields();
-
-        } catch (Exception e) {
-            showAlert(Alert.AlertType.ERROR, "Erreur", e.getMessage());
-        }
-    }
-
-    private boolean validateFields() {
-        String title = titleField.getText().trim();
-        String lieux = lieuxField.getText().trim();
-        String description = descriptionArea.getText().trim();
-        String duree = dureeField.getText().trim();
-        String nbPlacesStr = nbPlacesField.getText().trim();
+        String title = titleField.getText();
+        String lieu = lieuxField.getText();
+        String description = descriptionArea.getText();
+        String duree = dureeField.getText();
+        String nbPlaces = nbPlacesField.getText();
         LocalDate date = datePicker.getValue();
         String status = statusChoiceBox.getValue();
 
-        if (title.isEmpty() || lieux.isEmpty() || description.isEmpty() || duree.isEmpty() ||
-                nbPlacesStr.isEmpty() || date == null || status == null) {
-            showAlert(Alert.AlertType.WARNING, "Validation", "Tous les champs doivent être remplis");
-            return false;
+        // Juste un exemple de validation simple
+        if (title.isEmpty() || lieu.isEmpty()) {
+            showAlert(Alert.AlertType.WARNING, "Champs manquants", "Veuillez remplir tous les champs.");
+            return;
         }
 
-        if (title.length() < 3) {
-            showAlert(Alert.AlertType.WARNING, "Validation", "Le titre doit contenir au moins 3 caractères.");
-            return false;
-        }
-
-        if (description.length() < 10) {
-            showAlert(Alert.AlertType.WARNING, "Validation", "La description doit contenir au moins 10 caractères.");
-            return false;
-        }
-
-        if (!Pattern.matches("\\d+h(\\d{1,2})?", duree)) {
-            showAlert(Alert.AlertType.WARNING, "Validation", "La durée doit être au format correct (ex: 2h ou 1h30).");
-            return false;
-        }
-
-        try {
-            int nbPlaces = Integer.parseInt(nbPlacesStr);
-            if (nbPlaces <= 0) {
-                showAlert(Alert.AlertType.WARNING, "Validation", "Le nombre de places doit être supérieur à zéro.");
-                return false;
-            }
-        } catch (NumberFormatException e) {
-            showAlert(Alert.AlertType.WARNING, "Validation", "Le nombre de places doit être un entier valide.");
-            return false;
-        }
-
-        if (date.isBefore(LocalDate.now())) {
-            showAlert(Alert.AlertType.WARNING, "Validation", "La date de l’événement doit être future.");
-            return false;
-        }
-
-        return true;
+        // Simule l'enregistrement
+        System.out.println("Événement créé : " + title);
+        showAlert(Alert.AlertType.INFORMATION, "Succès", "Événement créé !");
     }
 
-    private void clearFields() {
-        titleField.clear();
-        lieuxField.clear();
-        descriptionArea.clear();
-        dureeField.clear();
-        nbPlacesField.clear();
-        datePicker.setValue(null);
-        statusChoiceBox.setValue("Pending");
+    @FXML
+    private void handleRetour() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("EventView.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) retourButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de charger la page précédente.");
+        }
     }
 
     private void showAlert(Alert.AlertType type, String title, String message) {

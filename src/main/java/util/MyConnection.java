@@ -41,12 +41,16 @@ public class MyConnection {
     public Connection getCnx() {
         try {
             if (cnx == null || cnx.isClosed()) {
-                // Reconnexion si la connexion est fermée
+                // Reconnection si la connexion est fermée
                 cnx = DriverManager.getConnection(URL, USER, PASS);
             }
         } catch (SQLException e) {
             System.err.println("Erreur de vérification de la connexion: " + e.getMessage());
         }
         return cnx;
+    }
+
+    public Connection getConnection() {
+        return null;
     }
 }

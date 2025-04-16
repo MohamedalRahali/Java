@@ -19,13 +19,8 @@ public class EventManagementController {
     }
 
     @FXML
-    private void goToModifyEvent(ActionEvent event) {
-        loadScene(event, "/fxml/modification_event.fxml", "Modifier un Événement");
-    }
-
-    @FXML
-    private void goToDeleteEvent() {
-        System.out.println("Suppression d'événement");
+    private void goToManageEventTypes(ActionEvent event) {
+        loadScene(event, "/fxml/event_type_view.fxml", "Gestion des Types d'Événements");
     }
 
     @FXML

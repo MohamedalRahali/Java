@@ -4,11 +4,12 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="gui.EventManagementController"  prefHeight="600.0" prefWidth="800.0">
+            fx:controller="gui.EventManagementController" prefHeight="600.0" prefWidth="800.0">
     <children>
-        <Button layoutX="50.0" layoutY="50.0" text="Créer Événement" onAction="#goToCreateEvent"/>
-        <Button layoutX="200.0" layoutY="50.0" text="Modifier Événement" onAction="#goToModifyEvent"/>
-        <Button layoutX="350.0" layoutY="50.0" text="Supprimer Événement" onAction="#goToDeleteEvent"/>
-        <Button layoutX="500.0" layoutY="50.0" text="Retour" onAction="#goBackToHome"/>
+        <VBox spacing="20" alignment="CENTER" AnchorPane.topAnchor="50" AnchorPane.leftAnchor="50">
+            <Button text="Gestion des Événements" style="-fx-font-weight: bold;" onAction="#goToCreateEvent" prefWidth="200"/>
+            <Button text="Gestion des Types d'Événements" style="-fx-font-weight: bold;" onAction="#goToManageEventTypes" prefWidth="200"/>
+            <Button text="Retour à l'accueil" style="-fx-font-weight: bold;" onAction="#goBackToHome" prefWidth="200"/>
+        </VBox>
     </children>
 </AnchorPane>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.CreateTypeController"
+            prefHeight="400" prefWidth="600">
+
+    <VBox spacing="15" alignment="CENTER" AnchorPane.topAnchor="50" AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50">
+        <Label text="Nouveau Type d'Événement" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+        <TextField fx:id="nomField" promptText="Nom du type" prefWidth="300"/>
+        <TextArea fx:id="descriptionArea" promptText="Description" prefWidth="300" prefHeight="100"/>
+
+        <Button text="Enregistrer" onAction="#handleSave" style="-fx-font-weight: bold;"/>
+    </VBox>
+</AnchorPane>
