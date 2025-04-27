@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherBlogs">
+    <children>
+        <!-- Zone d'en-tête -->
+        <Pane layoutY="14.0" prefHeight="56.0" prefWidth="700.0" styleClass="header-pane" stylesheets="@../Projet/CSS/app.css">
+            <children>
+                <ImageView fitHeight="33.0" fitWidth="38.0" layoutX="20.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Projet/Icons/icons8-blog-64.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="70.0" layoutY="11.0" prefHeight="35.0" prefWidth="300.0" text="Liste des Blogs" styleClass="header-label">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+
+        <!-- Liste des blogs -->
+        <ListView fx:id="listView" layoutX="20.0" layoutY="80.0" prefHeight="350.0" prefWidth="660.0" styleClass="blog-list" stylesheets="@../Projet/CSS/app.css" />
+
+        <!-- Boutons d'action -->
+        <Button layoutX="20.0" layoutY="440.0" onAction="#retourAjoutBlog" prefWidth="200.0" styleClass="action-button" text="↩ Retour à l'ajout">
+            <graphic>
+                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Projet/Icons/icons8-ajouter-64.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+
+        <Button layoutX="240.0" layoutY="440.0" onAction="#display" prefWidth="200.0" styleClass="action-button" text="🔄 Actualiser">
+            <graphic>
+                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Projet/Icons/icons8-actualiser-64.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+
+        <Button text="Afficher les blogs" onAction="#display"/>
+        <Button text="Ajouter un blog" onAction="#retourAjoutBlog"/>
+        <Button text="Types" onAction="#goToTypes"/>
+    </children>
+</AnchorPane>

@@ -1,0 +1,71 @@
+/* Style de base pour tous les boutons */
+Button {
+    -fx-background-color: #87CEEB; /* Couleur de fond */
+    -fx-text-fill: black;          /* Couleur du texte */
+    -fx-padding: 8 12 8 12;        /* Espacement interne */
+    -fx-alignment: baseline-left;
+    -fx-background-radius: 20;     /* Coins arrondis */
+    -fx-border-radius: 20;         /* Coins arrondis (bordure si utilisée) */
+    -fx-cursor: hand;              /* Curseur main au survol */
+}
+
+/* Effet au survol */
+Button:hover {
+    -fx-background-color: #E3F2FD;
+}
+
+/* Style spécifique pour les boutons avec la classe CSS 'profileSettings' */
+.profileSettings {
+    -fx-background-radius: 20;
+    -fx-background-color: linear-gradient(to bottom, #2c2e31, #202124);
+    -fx-border-radius: 20;
+    -fx-border-color: linear-gradient(to bottom, #ff0000, #5e0505);
+    -fx-border-width: 2;
+    -fx-text-fill: white;
+    -fx-padding: 10 20;
+    -fx-font-size: 14;
+}
+
+/* Hover pour 'profileSettings' */
+.profileSettings:hover {
+    -fx-background-color: linear-gradient(to bottom, #202124, #2c2e31);
+    -fx-border-color: linear-gradient(to bottom, #ff0000, #650000);
+}
+
+/* TextField stylé */
+TextField {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 6 10;
+    -fx-border-color: #87CEEB;
+    -fx-border-width: 1.5;
+    -fx-font-size: 13px;
+}
+
+/* Survol TextField */
+TextField:hover {
+    -fx-border-color: #00bfff;
+}
+
+/* Focus TextField */
+TextField:focused {
+    -fx-border-color: #1e90ff;
+    -fx-border-width: 2;
+}
+
+/* Pane blanche */
+.white-pane {
+    -fx-background-color: #E3F2FD;
+}
+
+/* ListView cell styling */
+.list-cell {
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+}
+
+.list-cell .label {
+    -fx-font-weight: bold;
+}

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GestionTypesController" stylesheets="@../Projet/CSS/app.css">
+    <children>
+        <!-- Sidebar Navigation -->
+        <VBox prefHeight="500.0" prefWidth="200.0" style="-fx-background-color: #2c3e50;">
+            <children>
+                <!-- Logo Section -->
+                <Pane prefHeight="100.0" prefWidth="200.0" style="-fx-alignment: center;">
+                    <children>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="70.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../Projet/Images/logo.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+
+                <!-- Navigation Buttons -->
+                <Button styleClass="nav-button" text="Types" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                            <image>
+                                <Image url="@../Projet/Icons/icons8-classer-par-catégories-50-white.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button styleClass="nav-button" text="Blogs" onAction="#retourAccueil" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                            <image>
+                                <Image url="@../Projet/Icons/icons8-blog-50-white.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </VBox>
+
+        <!-- Main Content Area -->
+        <AnchorPane layoutX="200.0" prefHeight="500.0" prefWidth="600.0">
+            <children>
+                <!-- Header -->
+                <Pane prefHeight="80.0" prefWidth="600.0" style="-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-width: 0 0 1px 0;">
+                    <children>
+                        <Label layoutX="20.0" layoutY="20.0" text="Gestion des Types" styleClass="header-title">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="20.0" layoutY="50.0" text="Ajouter, modifier ou supprimer des types" styleClass="header-subtitle" />
+                    </children>
+                </Pane>
+
+                <!-- Form Fields -->
+                <VBox layoutX="50.0" layoutY="100.0" spacing="15.0">
+                    <children>
+                        <VBox spacing="5.0">
+                            <children>
+                                <Label text="Libellé du Type *" styleClass="form-label" />
+                                <TextField fx:id="libelleField" prefWidth="400.0" promptText="Minimum 3 caractères" styleClass="form-field" />
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+
+                <!-- Action Buttons -->
+                <HBox layoutX="50.0" layoutY="180.0" spacing="15.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#ajouterType" prefHeight="40.0" prefWidth="120.0" styleClass="primary-button" text="Ajouter">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0">
+                                    <image>
+                                        <Image url="@../Projet/Icons/icons8-ajouter-48-white.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#modifierType" prefHeight="40.0" prefWidth="120.0" styleClass="primary-button" text="Modifier">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0">
+                                    <image>
+                                        <Image url="@../Projet/Icons/icons8-modifier-48-white.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#supprimerType" prefHeight="40.0" prefWidth="120.0" styleClass="danger-button" text="Supprimer">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0">
+                                    <image>
+                                        <Image url="@../Projet/Icons/icons8-supprimer-48-white.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#clearForm" prefHeight="40.0" prefWidth="120.0" styleClass="secondary-button" text="Vider">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0">
+                                    <image>
+                                        <Image url="@../Projet/Icons/icons8-effacer-48.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+
+                <!-- List View -->
+                <ListView fx:id="typesList" layoutX="50.0" layoutY="250.0" prefHeight="180.0" prefWidth="500.0" styleClass="list-view" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
