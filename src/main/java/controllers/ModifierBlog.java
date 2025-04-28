@@ -41,7 +41,6 @@ public class ModifierBlog {
 
     @FXML
     public void initialize() {
-        // Vérifier que tous les composants FXML sont correctement injectés
         assert titreField != null : "fx:id=\"titreField\" n'a pas été injecté";
         assert descriptionField != null : "fx:id=\"descriptionField\" n'a pas été injecté";
         assert datePubPicker != null : "fx:id=\"datePubPicker\" n'a pas été injecté";
@@ -49,7 +48,6 @@ public class ModifierBlog {
         assert typeComboBox != null : "fx:id=\"typeComboBox\" n'a pas été injecté";
 
         try {
-            // Charger les types dans le ComboBox
             List<Type_b> types = typeService.getAll();
             typeComboBox.setItems(FXCollections.observableArrayList(types));
         } catch (SQLException e) {

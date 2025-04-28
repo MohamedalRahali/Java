@@ -1,0 +1,592 @@
+.nav-button {
+    -fx-background-color: #34495e;
+    -fx-text-fill: white;
+    -fx-padding: 8 15;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: #2c3e50;
+}
+
+.nav-button .ikonli-font-icon {
+    -fx-fill: white;
+}
+
+/* Styles communs pour les boutons de réaction */
+.reaction-button,
+.reaction-button-love,
+.reaction-button-sad,
+.reaction-button-laugh,
+.reaction-button-angry {
+    -fx-padding: 8 15;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 2);
+}
+
+/* Style spécifique pour chaque bouton de réaction */
+.reaction-button {
+    -fx-background-color: #4267B2;
+}
+
+.reaction-button-love {
+    -fx-background-color: #E41E3F;
+}
+
+.reaction-button-sad {
+    -fx-background-color: #FFD93D;
+}
+
+.reaction-button-laugh {
+    -fx-background-color: #FFB800;
+}
+
+.reaction-button-angry {
+    -fx-background-color: #E94F4F;
+}
+
+/* Hover effects */
+.reaction-button:hover {
+    -fx-background-color: derive(#4267B2, -10%);
+}
+
+.reaction-button-love:hover {
+    -fx-background-color: derive(#E41E3F, -10%);
+}
+
+.reaction-button-sad:hover {
+    -fx-background-color: derive(#FFD93D, -10%);
+}
+
+.reaction-button-laugh:hover {
+    -fx-background-color: derive(#FFB800, -10%);
+}
+
+.reaction-button-angry:hover {
+    -fx-background-color: derive(#E94F4F, -10%);
+}
+
+/* Styles pour les icônes dans les boutons */
+.reaction-button .ikonli-font-icon,
+.reaction-button-love .ikonli-font-icon,
+.reaction-button-angry .ikonli-font-icon {
+    -fx-fill: white;
+}
+
+.reaction-button-sad .ikonli-font-icon,
+.reaction-button-laugh .ikonli-font-icon {
+    -fx-fill: black;
+}
+
+/* Styles pour les compteurs de réactions */
+.reaction-count-like {
+    -fx-text-fill: #4267B2;
+}
+
+.reaction-count-love {
+    -fx-text-fill: #E41E3F;
+}
+
+.reaction-count-sad {
+    -fx-text-fill: #FFD93D;
+}
+
+.reaction-count-laugh {
+    -fx-text-fill: #FFB800;
+}
+
+.reaction-count-angry {
+    -fx-text-fill: #E94F4F;
+}
+
+/* Style pour le bouton de publication */
+.publish-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-padding: 8 15;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.publish-button:hover {
+    -fx-background-color: #45a049;
+}
+
+.publish-button .ikonli-font-icon {
+    -fx-fill: white;
+}
+
+/* Styles pour l'en-tête */
+.header {
+    -fx-background-color: #f8f9fa;
+    -fx-padding: 10;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 3);
+}
+
+.header-icon {
+    -fx-fill: #3498db;
+}
+
+.header-title {
+    -fx-text-fill: #2c3e50;
+}
+
+/* Styles pour la liste des blogs */
+.blog-list {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+}
+
+.blog-list .list-cell {
+    -fx-padding: 15;
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.blog-list .list-cell:hover {
+    -fx-background-color: #f8f9fa;
+}
+
+.blog-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.blog-description {
+    -fx-font-size: 14px;
+    -fx-text-fill: #7f8c8d;
+    -fx-wrap-text: true;
+}
+
+.blog-metadata {
+    -fx-font-size: 12px;
+    -fx-text-fill: #95a5a6;
+}
+
+/* Styles pour les boutons d'action */
+.action-button {
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
+    -fx-padding: 8 15;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.action-button:hover {
+    -fx-background-color: #27ae60;
+}
+
+.action-button .ikonli-font-icon {
+    -fx-fill: white;
+}
+
+.refresh-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-padding: 8 15;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.refresh-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.refresh-button .ikonli-font-icon {
+    -fx-fill: white;
+}
+
+.types-button {
+    -fx-background-color: #9b59b6;
+    -fx-text-fill: white;
+    -fx-padding: 8 15;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.types-button:hover {
+    -fx-background-color: #8e44ad;
+}
+
+.types-button .ikonli-font-icon {
+    -fx-fill: white;
+}
+
+/* Styles pour la sidebar */
+.sidebar {
+    -fx-background-color: #2c3e50;
+    -fx-padding: 0;
+}
+
+.logo-container {
+    -fx-padding: 20;
+    -fx-background-color: #243342;
+}
+
+.logo-icon {
+    -fx-fill: white;
+}
+
+.nav-buttons-container {
+    -fx-padding: 10 0;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-padding: 10 15;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT;
+    -fx-min-width: 200;
+}
+
+.nav-button:hover {
+    -fx-background-color: #34495e;
+}
+
+.nav-button .ikonli-font-icon {
+    -fx-fill: white;
+}
+
+.nav-label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+/* Styles pour le contenu principal */
+.main-content {
+    -fx-background-color: white;
+}
+
+.content-header {
+    -fx-background-color: #f8f9fa;
+    -fx-padding: 15;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 3);
+}
+
+.header-icon {
+    -fx-fill: #3498db;
+}
+
+.header-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.header-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #7f8c8d;
+}
+
+/* Styles pour le formulaire */
+.form-container {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-spacing: 15;
+    -fx-max-width: 500;
+}
+
+.form-group {
+    -fx-spacing: 5;
+}
+
+.form-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.form-field {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 8;
+    -fx-pref-width: 400;
+}
+
+.form-field:focused {
+    -fx-background-color: white;
+    -fx-border-color: #3498db;
+}
+
+/* Button Container */
+.button-container {
+    -fx-padding: 15 0 0 0;
+    -fx-spacing: 10;
+}
+
+/* Save Button */
+.save-button {
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-background-radius: 5;
+}
+
+.save-button:hover {
+    -fx-background-color: #27ae60;
+}
+
+.save-button .ikonli-font-icon {
+    -fx-fill: white;
+}
+
+/* Display Button */
+.display-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-background-radius: 5;
+}
+
+.display-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.display-button .ikonli-font-icon {
+    -fx-fill: white;
+}
+
+/* Date Picker Styles */
+.date-picker {
+    -fx-background-color: transparent;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #3498db;
+    -fx-background-radius: 0 5 5 0;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.date-picker .arrow-button .arrow {
+    -fx-background-color: white;
+}
+
+/* ComboBox Styles */
+.combo-box {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.combo-box:hover {
+    -fx-border-color: #3498db;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.combo-box .arrow {
+    -fx-background-color: #3498db;
+}
+
+/* Styles pour le formulaire de modification */
+.edit-form {
+    -fx-background-color: white;
+    -fx-padding: 20;
+}
+
+.edit-header {
+    -fx-padding: 10;
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+.edit-header .header-icon {
+    -fx-fill: #3498db;
+}
+
+.edit-header .header-title {
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.info-label {
+    -fx-text-fill: #7f8c8d;
+    -fx-font-size: 12;
+}
+
+.info-label .ikonli-font-icon {
+    -fx-fill: #3498db;
+}
+
+/* Types Management Specific Styles */
+.types-list {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+}
+
+.types-list .list-cell {
+    -fx-padding: 10;
+    -fx-background-color: transparent;
+    -fx-text-fill: #2c3e50;
+}
+
+.types-list .list-cell:hover {
+    -fx-background-color: #f8f9fa;
+}
+
+.types-list .list-cell:selected {
+    -fx-background-color: #e3f2fd;
+    -fx-text-fill: #1976d2;
+}
+
+/* Action Buttons */
+.add-button, .edit-button, .delete-button, .clear-button {
+    -fx-padding: 8 15;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-min-width: 100;
+}
+
+.add-button {
+    -fx-background-color: #2ecc71;
+}
+
+.add-button:hover {
+    -fx-background-color: #27ae60;
+}
+
+.edit-button {
+    -fx-background-color: #3498db;
+}
+
+.edit-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.delete-button {
+    -fx-background-color: #e74c3c;
+}
+
+.delete-button:hover {
+    -fx-background-color: #c0392b;
+}
+
+.clear-button {
+    -fx-background-color: #95a5a6;
+}
+
+.clear-button:hover {
+    -fx-background-color: #7f8c8d;
+}
+
+/* Button Icons */
+.add-button .ikonli-font-icon,
+.edit-button .ikonli-font-icon,
+.delete-button .ikonli-font-icon,
+.clear-button .ikonli-font-icon {
+    -fx-fill: white;
+    -fx-icon-size: 16;
+}
+
+/* Types List */
+.types-list {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+}
+
+.types-list .list-cell {
+    -fx-padding: 10;
+    -fx-background-color: transparent;
+    -fx-text-fill: #2c3e50;
+}
+
+.types-list .list-cell:hover {
+    -fx-background-color: #f8f9fa;
+}
+
+.types-list .list-cell:selected {
+    -fx-background-color: #e3f2fd;
+    -fx-text-fill: #1976d2;
+}
+
+/* Action Buttons in Blog List */
+.consult-button, .edit-button, .delete-button {
+    -fx-padding: 5 10;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-font-size: 12px;
+    -fx-text-fill: white;
+}
+
+.consult-button {
+    -fx-background-color: #27ae60;
+}
+
+.consult-button:hover {
+    -fx-background-color: #219a52;
+}
+
+.consult-button .ikonli-font-icon {
+    -fx-fill: white;
+}
+
+.edit-button {
+    -fx-background-color: #3498db;
+}
+
+.edit-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.edit-button .ikonli-font-icon {
+    -fx-fill: white;
+}
+
+.delete-button {
+    -fx-background-color: #e74c3c;
+}
+
+.delete-button:hover {
+    -fx-background-color: #c0392b;
+}
+
+.delete-button .ikonli-font-icon {
+    -fx-fill: white;
+}
+
+.form-label .ikonli-font-icon {
+    -fx-fill: #2c3e50;
+}
+
+.facebook-share-button {
+    -fx-background-color: #4267B2;
+    -fx-text-fill: white;
+    -fx-padding: 8 15;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.facebook-share-button:hover {
+    -fx-background-color: #365899;
+}
+
+.facebook-share-button .ikonli-font-icon {
+    -fx-fill: white;
+} 

@@ -26,9 +26,9 @@ public class Type_bCRUD {
                     type.setId(generatedKeys.getInt(1));
                 }
             }
-            System.out.println("✅ Type_b ajouté avec succès !");
+            System.out.println("Type_b ajouté avec succès !");
         } catch (SQLException e) {
-            System.err.println("❌ Erreur lors de l'ajout : " + e.getMessage());
+            System.err.println("Erreur lors de l'ajout : " + e.getMessage());
             throw e;
         }
     }
@@ -40,12 +40,12 @@ public class Type_bCRUD {
             ps.setInt(2, type.getId());
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("✅ Type_b modifié avec succès !");
+                System.out.println("Type_b modifié avec succès !");
             } else {
-                System.out.println("⚠️ Aucun Type_b trouvé avec l'ID : " + type.getId());
+                System.out.println("Aucun Type_b trouvé avec l'ID : " + type.getId());
             }
         } catch (SQLException e) {
-            System.err.println("❌ Erreur lors de la modification : " + e.getMessage());
+            System.err.println("Erreur lors de la modification : " + e.getMessage());
             throw e;
         }
     }
@@ -56,12 +56,12 @@ public class Type_bCRUD {
             ps.setInt(1, id);
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("✅ Type_b supprimé avec succès !");
+                System.out.println("Type_b supprimé avec succès !");
             } else {
-                System.out.println("⚠️ Aucun Type_b trouvé avec l'ID : " + id);
+                System.out.println("Aucun Type_b trouvé avec l'ID : " + id);
             }
         } catch (SQLException e) {
-            System.err.println("❌ Erreur lors de la suppression : " + e.getMessage());
+            System.err.println("Erreur lors de la suppression : " + e.getMessage());
             throw e;
         }
     }
@@ -80,7 +80,7 @@ public class Type_bCRUD {
                 ));
             }
         } catch (SQLException e) {
-            System.err.println("❌ Erreur lors de la récupération : " + e.getMessage());
+            System.err.println("Erreur lors de la récupération : " + e.getMessage());
             throw e;
         }
 

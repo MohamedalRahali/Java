@@ -1,18 +1,30 @@
 package model;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
-public class Commentaire {
+public class Comment {
     private int id;
     private String contenu;
-    private Timestamp dateCreation;
+    private Date dateCreation;
     private int blogId;
     private int userId;
+    private boolean isReported;
+    private int reportCount;
 
-    public Commentaire() {
+    public Comment() {
+        this.dateCreation = new Date();
+        this.isReported = false;
+        this.reportCount = 0;
     }
 
-    public Commentaire(int id, String contenu, Timestamp dateCreation, int blogId, int userId) {
+    public Comment(String contenu, int blogId, int userId) {
+        this();
+        this.contenu = contenu;
+        this.blogId = blogId;
+        this.userId = userId;
+    }
+
+    public Comment(int id, String contenu, Date dateCreation, int blogId, int userId) {
         this.id = id;
         this.contenu = contenu;
         this.dateCreation = dateCreation;
@@ -20,13 +32,6 @@ public class Commentaire {
         this.userId = userId;
     }
 
-    public Commentaire(String contenu, int blogId, int userId) {
-        this.contenu = contenu;
-        this.blogId = blogId;
-        this.userId = userId;
-    }
-
-    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -43,11 +48,11 @@ public class Commentaire {
         this.contenu = contenu;
     }
 
-    public Timestamp getDateCreation() {
+    public Date getDateCreation() {
         return dateCreation;
     }
 
-    public void setDateCreation(Timestamp dateCreation) {
+    public void setDateCreation(Date dateCreation) {
         this.dateCreation = dateCreation;
     }
 
@@ -67,14 +72,19 @@ public class Commentaire {
         this.userId = userId;
     }
 
-    @Override
-    public String toString() {
-        return "Commentaire{" +
-                "id=" + id +
-                ", contenu='" + contenu + '\'' +
-                ", dateCreation=" + dateCreation +
-                ", blogId=" + blogId +
-                ", userId=" + userId +
-                '}';
+    public boolean isReported() {
+        return isReported;
+    }
+
+    public void setReported(boolean reported) {
+        isReported = reported;
+    }
+
+    public int getReportCount() {
+        return reportCount;
+    }
+
+    public void setReportCount(int reportCount) {
+        this.reportCount = reportCount;
     }
 } 

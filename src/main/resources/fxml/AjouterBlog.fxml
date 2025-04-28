@@ -2,128 +2,127 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterBlog" stylesheets="@../Projet/CSS/app.css">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" 
+            xmlns="http://javafx.com/javafx/17" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="controllers.AjouterBlog" 
+            stylesheets="@../styles/styles.css">
     <children>
         <!-- Sidebar Navigation -->
-        <VBox prefHeight="500.0" prefWidth="200.0" style="-fx-background-color: #2c3e50;">
+        <VBox prefHeight="500.0" prefWidth="200.0" styleClass="sidebar">
             <children>
                 <!-- Logo Section -->
-                <Pane prefHeight="100.0" prefWidth="200.0" style="-fx-alignment: center;">
-                    <children>
-                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="70.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../Projet/Images/logo.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </Pane>
+                <VBox alignment="CENTER" prefHeight="100.0" styleClass="logo-container">
+                    <FontIcon iconLiteral="fas-pen-fancy" iconSize="40" styleClass="logo-icon"/>
+                </VBox>
 
                 <!-- Navigation Buttons -->
-                <Button styleClass="nav-button" text="Blogs" textFill="WHITE">
+                <Button styleClass="nav-button">
                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0">
-                            <image>
-                                <Image url="@../Projet/Icons/icons8-blog-50-white.png" />
-                            </image>
-                        </ImageView>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <FontIcon iconLiteral="fas-blog" iconSize="16"/>
+                            <Label text="Blogs" style="-fx-text-fill: white;"/>
+                        </HBox>
                     </graphic>
                 </Button>
-                <Button styleClass="nav-button" text="Types" onAction="#goToCategories" textFill="WHITE">
+                
+                <Button styleClass="nav-button" onAction="#goToCategories">
                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0">
-                            <image>
-                                <Image url="@../Projet/Icons/icons8-classer-par-catégories-50-white.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button styleClass="nav-button" text="Formations" textFill="WHITE">
-                    <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0">
-                            <image>
-                                <Image url="@../Projet/Icons/icons8-chapeau-de-diplôme-50-white.png" />
-                            </image>
-                        </ImageView>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <FontIcon iconLiteral="fas-tags" iconSize="16"/>
+                            <Label text="Types" style="-fx-text-fill: white;"/>
+                        </HBox>
                     </graphic>
                 </Button>
             </children>
         </VBox>
 
         <!-- Main Content Area -->
-        <AnchorPane layoutX="200.0" prefHeight="500.0" prefWidth="600.0">
+        <AnchorPane layoutX="200.0" prefHeight="500.0" prefWidth="600.0" styleClass="main-content">
             <children>
                 <!-- Header -->
-                <Pane prefHeight="80.0" prefWidth="600.0" style="-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-width: 0 0 1px 0;">
-                    <children>
-                        <Label layoutX="20.0" layoutY="20.0" text="Ajouter un Blog" styleClass="header-title">
+                <VBox spacing="5" styleClass="content-header">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <FontIcon iconLiteral="fas-plus-circle" iconSize="24" styleClass="header-icon"/>
+                        <Label text="Ajouter un Blog" styleClass="header-title">
                             <font>
-                                <Font name="System Bold" size="24.0" />
+                                <Font name="System Bold" size="24.0"/>
                             </font>
                         </Label>
-                        <Label layoutX="20.0" layoutY="50.0" text="Remplissez les détails du blog" styleClass="header-subtitle" />
-                    </children>
-                </Pane>
-
-                <!-- Form Fields -->
-                <VBox layoutX="50.0" layoutY="100.0" spacing="15.0">
-                    <children>
-                        <VBox spacing="5.0">
-                            <children>
-                                <Label text="Titre du Blog *" styleClass="form-label" />
-                                <TextField fx:id="titre" prefWidth="400.0" promptText="Minimum 3 caractères" styleClass="form-field" />
-                            </children>
-                        </VBox>
-
-                        <VBox spacing="5.0">
-                            <children>
-                                <Label text="Description *" styleClass="form-label" />
-                                <TextArea fx:id="descr" prefHeight="100.0" prefWidth="400.0" promptText="Minimum 10 caractères" styleClass="form-field" />
-                            </children>
-                        </VBox>
-
-                        <VBox spacing="5.0">
-                            <children>
-                                <Label text="Date de Publication" styleClass="form-label" />
-                                <DatePicker fx:id="datePub" prefWidth="400.0" styleClass="form-field" />
-                            </children>
-                        </VBox>
-
-                        <VBox spacing="5.0">
-                            <children>
-                                <Label text="Type de Blog" styleClass="form-label" />
-                                <ComboBox fx:id="typeCombo" prefWidth="400.0" styleClass="form-field" />
-                            </children>
-                        </VBox>
-                    </children>
+                    </HBox>
+                    <Label text="Remplissez les détails du blog" styleClass="header-subtitle"/>
                 </VBox>
 
-                <!-- Action Buttons -->
-                <HBox layoutX="50.0" layoutY="430.0" spacing="15.0">
-                    <children>
-                        <Button mnemonicParsing="false" onAction="#save" prefHeight="40.0" prefWidth="120.0" styleClass="primary-button" text="Enregistrer">
+                <!-- Form Fields -->
+                <VBox layoutX="50.0" layoutY="100.0" spacing="15.0" styleClass="form-container">
+                    <!-- Titre -->
+                    <VBox spacing="5.0" styleClass="form-group">
+                        <Label text="Titre du Blog *" styleClass="form-label">
                             <graphic>
-                                <ImageView fitHeight="20.0" fitWidth="20.0">
-                                    <image>
-                                        <Image url="@../Projet/Icons/icons8-sauvegarder-48-white.png" />
-                                    </image>
-                                </ImageView>
+                                <FontIcon iconLiteral="fas-heading" iconSize="14"/>
+                            </graphic>
+                        </Label>
+                        <TextField fx:id="titre" prefWidth="400.0" promptText="Minimum 3 caractères" styleClass="form-field"/>
+                    </VBox>
+
+                    <!-- Description -->
+                    <VBox spacing="5.0" styleClass="form-group">
+                        <Label text="Description *" styleClass="form-label">
+                            <graphic>
+                                <FontIcon iconLiteral="fas-align-left" iconSize="14"/>
+                            </graphic>
+                        </Label>
+                        <TextArea fx:id="descr" prefHeight="100.0" prefWidth="400.0" promptText="Minimum 10 caractères" styleClass="form-field"/>
+                    </VBox>
+
+                    <!-- Date de Publication -->
+                    <VBox spacing="5.0" styleClass="form-group">
+                        <Label text="Date de Publication" styleClass="form-label">
+                            <graphic>
+                                <FontIcon iconLiteral="fas-calendar-alt" iconSize="14"/>
+                            </graphic>
+                        </Label>
+                        <DatePicker fx:id="datePub" prefWidth="400.0" styleClass="form-field"/>
+                    </VBox>
+
+                    <!-- Type de Blog -->
+                    <VBox spacing="5.0" styleClass="form-group">
+                        <Label text="Type de Blog" styleClass="form-label">
+                            <graphic>
+                                <FontIcon iconLiteral="fas-tag" iconSize="14"/>
+                            </graphic>
+                        </Label>
+                        <ComboBox fx:id="typeCombo" prefWidth="400.0" styleClass="form-field"/>
+                    </VBox>
+
+                    <!-- Buttons -->
+                    <HBox spacing="10" styleClass="button-container">
+                        <Button onAction="#save" styleClass="save-button">
+                            <graphic>
+                                <HBox spacing="5" alignment="CENTER">
+                                    <FontIcon iconLiteral="fas-save" iconSize="16"/>
+                                    <Label text="Enregistrer" style="-fx-text-fill: white;"/>
+                                </HBox>
                             </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#display" prefHeight="40.0" prefWidth="120.0" styleClass="secondary-button" text="Afficher">
+                        
+                        <Button onAction="#display" styleClass="display-button">
                             <graphic>
-                                <ImageView fitHeight="20.0" fitWidth="20.0">
-                                    <image>
-                                        <Image url="@../Projet/Icons/icons8-afficher-48.png" />
-                                    </image>
-                                </ImageView>
+                                <HBox spacing="5" alignment="CENTER">
+                                    <FontIcon iconLiteral="fas-list" iconSize="16"/>
+                                    <Label text="Afficher" style="-fx-text-fill: white;"/>
+                                </HBox>
                             </graphic>
                         </Button>
-                    </children>
-                </HBox>
+                    </HBox>
+                </VBox>
             </children>
         </AnchorPane>
     </children>

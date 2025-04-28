@@ -25,9 +25,9 @@ public class BlogsService implements IService<Blogs> {
             ps.setDate(3, new java.sql.Date(blog.getDate_crea().getTime()));
             ps.setDate(4, blog.getDate_pub() != null ? new java.sql.Date(blog.getDate_pub().getTime()) : null);
             ps.executeUpdate();
-            System.out.println("✅ Blog ajouté !");
+            System.out.println("Blog ajouté !");
         } catch (SQLException e) {
-            System.err.println("❌ Erreur ajout : " + e.getMessage());
+            System.err.println("Erreur ajout : " + e.getMessage());
             throw e;
         }
     }
@@ -50,22 +50,35 @@ public class BlogsService implements IService<Blogs> {
             ps.setInt(5, blog.getId());
             
             ps.executeUpdate();
-            System.out.println("✅ Blog mis à jour !");
+            System.out.println("Blog mis à jour !");
         } catch (SQLException e) {
-            System.err.println("❌ Erreur mise à jour : " + e.getMessage());
+            System.err.println("Erreur mise à jour : " + e.getMessage());
             throw e;
         }
     }
 
     @Override
-    public void delete(int id) {
-        String sql = "DELETE FROM blogs WHERE id = ?";
-        try (PreparedStatement ps = cnx.prepareStatement(sql)) {
+    public void delete(int id) throws SQLException {
+        // First delete all associated reactions
+        String deleteReactionsSql = "DELETE FROM reaction WHERE blog_id = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(deleteReactionsSql)) {
             ps.setInt(1, id);
             ps.executeUpdate();
-            System.out.println("✅ Blog supprimé !");
-        } catch (SQLException e) {
-            System.err.println("❌ Erreur suppression : " + e.getMessage());
+        }
+
+        // Then delete all associated comments
+        String deleteCommentsSql = "DELETE FROM comment WHERE relat_id = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(deleteCommentsSql)) {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        }
+
+        // Finally delete the blog
+        String deleteBlogSql = "DELETE FROM blogs WHERE id = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(deleteBlogSql)) {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            System.out.println("Blog supprimé !");
         }
     }
 
@@ -95,7 +108,6 @@ public class BlogsService implements IService<Blogs> {
              ResultSet rs = statement.executeQuery(query)) {
 
             while (rs.next()) {
-                // Créer d'abord le type s'il existe
                 Type_b type = null;
                 if (rs.getObject("type_id") != null) {
                     type = new Type_b(
@@ -104,7 +116,6 @@ public class BlogsService implements IService<Blogs> {
                     );
                 }
 
-                // Créer le blog
                 Blogs blog = Blogs.fromDatabase(
                     rs.getInt("id"),
                     rs.getString("titre"),
@@ -112,8 +123,7 @@ public class BlogsService implements IService<Blogs> {
                     rs.getDate("date_pub"),
                     rs.getDate("date_crea")
                 );
-                
-                // Définir le type
+
                 if (type != null) {
                     blog.setType(type);
                 }
@@ -122,7 +132,7 @@ public class BlogsService implements IService<Blogs> {
             }
 
         } catch (SQLException e) {
-            System.err.println("❌ Erreur affichage : " + e.getMessage());
+            System.err.println("Erreur affichage : " + e.getMessage());
             throw e;
         }
 
@@ -148,8 +158,7 @@ public class BlogsService implements IService<Blogs> {
                 );
                 blog.setId(rs.getInt("id"));
                 blog.setDate_crea(rs.getDate("date_crea"));
-                
-                // Ajouter le type s'il existe
+
                 if (rs.getObject("type_id") != null) {
                     Type_b type = new Type_b(
                         rs.getInt("type_id"),

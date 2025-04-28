@@ -17,10 +17,10 @@ public class MainFX extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            System.out.println("Chargement du fichier FXML de test...");
-            Parent root = FXMLLoader.load(getClass().getResource("/FXML/AjouterBlog.fxml"));
+            System.out.println("Chargement de la liste des blogs...");
+            Parent root = FXMLLoader.load(getClass().getResource("/FXML/AfficherBlogs.fxml"));
             primaryStage.setScene(new Scene(root));
-            primaryStage.setTitle("Ajouter un Blog");
+            primaryStage.setTitle("Liste des Blogs");
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

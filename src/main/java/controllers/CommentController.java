@@ -5,27 +5,27 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import model.Commentaire;
-import service.CommentaireCRUD;
+import model.Comment;
+import service.CommentCRUD;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class CommentaireController implements Initializable {
+public class CommentController implements Initializable {
     @FXML
     private VBox commentsContainer;
     @FXML
     private TextArea commentTextArea;
 
-    private CommentaireCRUD commentaireCRUD;
+    private CommentCRUD commentCRUD;
     private int currentBlogId;
     private int currentUserId;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        commentaireCRUD = new CommentaireCRUD();
+        commentCRUD = new CommentCRUD();
     }
 
     public void setBlogId(int blogId) {
@@ -39,10 +39,10 @@ public class CommentaireController implements Initializable {
 
     private void loadComments() {
         try {
-            List<Commentaire> comments = commentaireCRUD.getCommentsByBlogId(currentBlogId);
+            List<Comment> comments = commentCRUD.getCommentsByBlogId(currentBlogId);
             commentsContainer.getChildren().clear();
 
-            for (Commentaire comment : comments) {
+            for (Comment comment : comments) {
                 VBox commentBox = new VBox(5);
                 commentBox.setStyle("-fx-padding: 10; -fx-background-color: #f0f0f0; -fx-background-radius: 5;");
 
@@ -56,7 +56,7 @@ public class CommentaireController implements Initializable {
                 commentsContainer.getChildren().add(commentBox);
             }
         } catch (SQLException e) {
-            System.err.println("Erreur lors du chargement des commentaires : " + e.getMessage());
+            System.err.println("Erreur lors du chargement des comments : " + e.getMessage());
         }
     }
 
@@ -65,13 +65,13 @@ public class CommentaireController implements Initializable {
         String content = commentTextArea.getText().trim();
         if (!content.isEmpty()) {
             try {
-                Commentaire comment = new Commentaire(content, currentBlogId, currentUserId);
-                commentaireCRUD.add(comment);
+                Comment comment = new Comment(content, currentBlogId, currentUserId);
+                commentCRUD.add(comment);
                 commentTextArea.clear();
                 loadComments();
             } catch (SQLException e) {
-                System.err.println("Erreur lors de l'ajout du commentaire : " + e.getMessage());
+                System.err.println("Erreur lors de l'ajout du comment : " + e.getMessage());
             }
         }
     }
-} 
+}

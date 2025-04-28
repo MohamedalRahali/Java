@@ -19,7 +19,7 @@ import javafx.event.ActionEvent;
 public class GestionTypesController {
 
     @FXML private TextField libelleField;
-    @FXML private ListView<Type_b> typesList;
+    @FXML private ListView<Type_b> typesListView;
 
     private final Type_bCRUD service = new Type_bCRUD();
     private Type_b selectedType;
@@ -28,7 +28,7 @@ public class GestionTypesController {
     public void initialize() {
         refreshList();
 
-        typesList.setCellFactory(param -> new ListCell<>() {
+        typesListView.setCellFactory(param -> new ListCell<>() {
             @Override
             protected void updateItem(Type_b item, boolean empty) {
                 super.updateItem(item, empty);
@@ -40,8 +40,8 @@ public class GestionTypesController {
             }
         });
 
-        typesList.setOnMouseClicked((MouseEvent e) -> {
-            selectedType = typesList.getSelectionModel().getSelectedItem();
+        typesListView.setOnMouseClicked((MouseEvent e) -> {
+            selectedType = typesListView.getSelectionModel().getSelectedItem();
             if (selectedType != null) {
                 libelleField.setText(selectedType.getLibelle());
             }
@@ -49,7 +49,7 @@ public class GestionTypesController {
     }
 
     @FXML
-    public void ajouterType() {
+    public void handleAdd() {
         if (!validateFields()) return;
 
         String libelle = libelleField.getText().trim();
@@ -66,7 +66,7 @@ public class GestionTypesController {
     }
 
     @FXML
-    public void modifierType() {
+    public void handleModify() {
         if (selectedType == null) {
             showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner un type à modifier.");
             return;
@@ -87,7 +87,7 @@ public class GestionTypesController {
     }
 
     @FXML
-    public void supprimerType() {
+    public void handleDelete() {
         if (selectedType == null) {
             showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner un type à supprimer.");
             return;
@@ -104,15 +104,37 @@ public class GestionTypesController {
     }
 
     @FXML
-    public void clearForm() {
+    public void handleClear() {
+        clearForm();
+    }
+
+    @FXML
+    public void handleTypesAction(ActionEvent event) {
+    }
+
+    @FXML
+    public void handleBlogsAction(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/FXML/AfficherBlogs.fxml"));
+            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Liste des Blogs");
+            stage.show();
+        } catch (IOException e) {
+            showAlert(Alert.AlertType.ERROR, "Erreur de navigation", e.getMessage());
+        }
+    }
+
+    private void clearForm() {
         libelleField.clear();
         selectedType = null;
+        typesListView.getSelectionModel().clearSelection();
     }
 
     private void refreshList() {
         try {
             ObservableList<Type_b> list = FXCollections.observableArrayList(service.display());
-            typesList.setItems(list);
+            typesListView.setItems(list);
         } catch (SQLException e) {
             showAlert(Alert.AlertType.ERROR, "Erreur SQL", "Impossible de charger les types: " + e.getMessage());
         }
@@ -140,18 +162,5 @@ public class GestionTypesController {
         alert.setHeaderText(null);
         alert.setContentText(msg);
         alert.showAndWait();
-    }
-
-    @FXML
-    private void retourAccueil(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/FXML/AjouterBlog.fxml"));
-            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Gestion des Blogs");
-            stage.show();
-        } catch (IOException e) {
-            showAlert(Alert.AlertType.ERROR, "Erreur de navigation", e.getMessage());
-        }
     }
 }

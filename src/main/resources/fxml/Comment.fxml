@@ -6,25 +6,25 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controllers.CommentaireController"
+      fx:controller="controllers.CommentController"
       spacing="10"
       padding="10">
 
-    <Label text="Commentaires" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    <Label text="Comments" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
 
     <VBox fx:id="commentsContainer" spacing="10">
-        <!-- Les commentaires seront ajoutés dynamiquement ici -->
+        <!-- Les comments seront ajoutés dynamiquement ici -->
     </VBox>
 
     <VBox spacing="5">
-        <Label text="Ajouter un commentaire"/>
-        <TextArea fx:id="commentTextArea" 
-                 promptText="Écrivez votre commentaire ici..."
-                 prefRowCount="3"
-                 wrapText="true"/>
-        <Button text="Publier" 
+        <Label text="Ajouter un comment"/>
+        <TextArea fx:id="commentTextArea"
+                  promptText="Écrivez votre comment ici..."
+                  prefRowCount="3"
+                  wrapText="true"/>
+        <Button text="Publier"
                 onAction="#handleAddComment"
                 style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
     </VBox>
 
-</VBox> 
+</VBox>

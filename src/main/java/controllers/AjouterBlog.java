@@ -41,10 +41,8 @@ public class AjouterBlog {
     @FXML
     public void initialize() {
         try {
-            // Charger les types dans le ComboBox
             typeCombo.setItems(FXCollections.observableArrayList(typeCRUD.display()));
-            
-            // Définir comment afficher les types dans le ComboBox
+
             typeCombo.setCellFactory(param -> new ListCell<Type_b>() {
                 @Override
                 protected void updateItem(Type_b item, boolean empty) {
@@ -56,8 +54,7 @@ public class AjouterBlog {
                     }
                 }
             });
-            
-            // Même chose pour l'affichage du type sélectionné
+
             typeCombo.setButtonCell(new ListCell<Type_b>() {
                 @Override
                 protected void updateItem(Type_b item, boolean empty) {
