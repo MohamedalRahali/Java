@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+
+<HBox style="-fx-background-color: white; -fx-padding: 10 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);" spacing="20" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ArtistBarController">
+    <!-- Logo -->
+    <ImageView fitHeight="60" fitWidth="150" preserveRatio="true">
+        <Image url="@/assets/images/logo.png"/>
+    </ImageView>
+    <!-- Navigation Buttons (center) -->
+    <HBox spacing="30" alignment="CENTER" HBox.hgrow="ALWAYS">
+        <Button text="Accueil" onAction="#goToArtistHome"
+                style="-fx-background-color: transparent; -fx-text-fill: #2196F3; -fx-font-size: 14px; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-width: 0 0 2 0;">
+            <effect>
+                <Glow level="0.3"/>
+            </effect>
+        </Button>
+        <MenuButton text="Evénements"
+                    style="-fx-background-color: transparent; -fx-text-fill: #2196F3; -fx-font-size: 14px; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-width: 0 0 2 0;">
+            <items>
+                <MenuItem text="Mes événements" onAction="#goToMesEvenements"/>
+                <MenuItem text="Créer événement" onAction="#goToCreateEvenement"/>
+            </items>
+            <effect>
+                <Glow level="0.3"/>
+            </effect>
+        </MenuButton>
+    </HBox>
+    <!-- Profile/Logout Buttons (right) -->
+    <HBox spacing="20" alignment="CENTER_RIGHT">
+        <Button text="👤 Profil" onAction="#goToArtistProfile"
+                style="-fx-background-color: #ff7043; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 8 20; -fx-background-radius: 20; -fx-font-weight: bold;">
+            <effect>
+                <DropShadow color="#ff704399" radius="10" spread="0.2"/>
+            </effect>
+        </Button>
+        <Button fx:id="logoutButton" text="🔙 Logout" onAction="#logout"
+                style="-fx-background-color: #4d3428; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 8 20; -fx-background-radius: 20;">
+            <effect>
+                <DropShadow color="#00000033" radius="10" spread="0.2"/>
+            </effect>
+        </Button>
+    </HBox>
+</HBox>

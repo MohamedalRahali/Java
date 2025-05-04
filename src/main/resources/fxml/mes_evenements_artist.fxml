@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.MesEvenementsArtistController"
+            prefHeight="800.0" prefWidth="1200.0"
+            style="-fx-background-color: white;">
+    <children>
+        <fx:include source="/fxml/ArtistBar.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <!-- Background Image -->
+        <StackPane AnchorPane.topAnchor="80" AnchorPane.bottomAnchor="60" 
+                   AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <ImageView fitHeight="660" fitWidth="1200" preserveRatio="false">
+                <Image url="@/assets/images/slider-bg.png"/>
+            </ImageView>
+        </StackPane>
+
+        <!-- Main Content Section (like artist_home) -->
+        <VBox spacing="20" alignment="TOP_CENTER" AnchorPane.topAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" style="-fx-padding: 40 60 0 60;">
+            <Label text="Mes Événements" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #314060;" />
+            <TableView fx:id="evenementsTable" prefHeight="500" style="-fx-background-radius: 10; -fx-background-color: white;">
+                <columns>
+                    <TableColumn text="Titre" fx:id="titreColumn" prefWidth="200" />
+                    <TableColumn text="Date" fx:id="dateColumn" prefWidth="150" />
+                    <TableColumn text="Lieu" fx:id="lieuColumn" prefWidth="200" />
+                    <TableColumn text="Description" fx:id="descriptionColumn" prefWidth="250" />
+                    <TableColumn text="Durée" fx:id="dureeColumn" prefWidth="100" />
+                    <TableColumn text="Places" fx:id="placesColumn" prefWidth="90" />
+                    <TableColumn text="Type" fx:id="typeColumn" prefWidth="120" />
+                    <TableColumn text="Statut" fx:id="statusColumn" prefWidth="120" />
+                    <TableColumn text="Actions" fx:id="actionsColumn" prefWidth="150" />
+                </columns>
+            </TableView>
+        </VBox>
+    </children>
+</AnchorPane>

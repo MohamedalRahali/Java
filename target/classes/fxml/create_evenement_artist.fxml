@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.web.WebView?>
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.CreateEvenementArtistController"
+            prefHeight="800.0" prefWidth="1200.0"
+            style="-fx-background-color: white;">
+    <children>
+        <fx:include source="/fxml/ArtistBar.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <!-- Background Image -->
+        <StackPane AnchorPane.topAnchor="80" AnchorPane.bottomAnchor="60" 
+                   AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <ImageView fitHeight="660" fitWidth="1200" preserveRatio="false">
+                <Image url="@/assets/images/slider-bg.png"/>
+            </ImageView>
+        </StackPane>
+
+        <!-- Main Content Section (like artist_home) -->
+        <ScrollPane fitToWidth="true" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" AnchorPane.bottomAnchor="0.0" style="-fx-background-color: transparent; -fx-background: transparent; -fx-padding: 0;">
+            <content>
+                <VBox spacing="20" style="-fx-padding: 30 40 30 40;">
+                    <!-- Form Content -->
+                    <HBox spacing="20">
+                        <!-- Left side - Form fields -->
+                        <VBox spacing="10" HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10;">
+                            <Label text="Event Details" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #314060;"/>
+                            <Label text="Title:" style="-fx-font-weight: bold;"/>
+                            <TextField fx:id="titleField" styleClass="form-field" promptText="Enter event title"/>
+                            <Label fx:id="titleErrorLabel" style="-fx-text-fill: red;" />
+                            <Label text="Date:" style="-fx-font-weight: bold;"/>
+                            <DatePicker fx:id="datePicker" styleClass="form-field" promptText="Select event date"/>
+                            <Label fx:id="dateErrorLabel" style="-fx-text-fill: red;" />
+                            <Label text="Description:" style="-fx-font-weight: bold;"/>
+                            <TextArea fx:id="descriptionField" wrapText="true" prefRowCount="3" styleClass="form-field" promptText="Enter event description"/>
+                            <Label fx:id="descriptionErrorLabel" style="-fx-text-fill: red;" />
+                            <HBox spacing="10">
+                                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                                    <Label text="Address:" style="-fx-font-weight: bold;"/>
+                                    <TextField fx:id="adresseField" styleClass="form-field" promptText="Enter address"/>
+                                </VBox>
+                                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                                    <Label text="City:" style="-fx-font-weight: bold;"/>
+                                    <TextField fx:id="villeField" styleClass="form-field" promptText="Enter city"/>
+                                </VBox>
+                            </HBox>
+                            <HBox spacing="10">
+                                <Button text="Search Location" styleClass="action-button" onAction="#handleSearchLocation"/>
+                                <Label fx:id="locationErrorLabel" style="-fx-text-fill: red;" />
+                            </HBox>
+                            <Label text="Duration (e.g. 2h30):" style="-fx-font-weight: bold;"/>
+                            <TextField fx:id="dureeField" styleClass="form-field" promptText="Enter duration"/>
+                            <Label fx:id="dureeErrorLabel" style="-fx-text-fill: red;" />
+                            <Label text="Number of Places:" style="-fx-font-weight: bold;"/>
+                            <Spinner fx:id="nbPlacesSpinner" editable="true" styleClass="form-field"/>
+                            <Label fx:id="nbPlacesErrorLabel" style="-fx-text-fill: red;" />
+                            <Label text="Event Type:" style="-fx-font-weight: bold;"/>
+                            <ComboBox fx:id="typeEventComboBox" styleClass="form-field" promptText="Select event type"/>
+                            <Label fx:id="typeEventErrorLabel" style="-fx-text-fill: red;" />
+                            <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 20 0 0 0;">
+                                <Button text="Créer" onAction="#createEvenement" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 20; -fx-padding: 8 32;" />
+                            </HBox>
+                        </VBox>
+                        <!-- Right side - Map -->
+                        <VBox spacing="10" prefWidth="400" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10;">
+                            <Label text="Location Map" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #314060;"/>
+                            <StackPane fx:id="mapContainer" VBox.vgrow="ALWAYS" style="-fx-border-color: #ccc; -fx-border-width: 1; -fx-border-radius: 5;">
+                                <WebView fx:id="mapView" prefHeight="400" />
+                            </StackPane>
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.TypeReclamationController"
+            prefHeight="700.0" prefWidth="1200.0"
+            style="-fx-background-color: #f8fafc;"
+            stylesheets="@backborad.css">
+    <children>
+        <!-- Top Bar -->
+        <fx:include fx:id="adminBar" source="AdminBar.fxml" />
+
+        <!-- Sidebar under Top Bar -->
+        <VBox spacing="0" prefWidth="200" style="-fx-background-color: #00b4d8; -fx-background-radius: 0 24 24 0; -fx-padding: 36 0 0 0; -fx-min-width: 200; -fx-max-width: 200; -fx-pref-width: 200;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0" AnchorPane.bottomAnchor="0.0">
+            <VBox alignment="CENTER" spacing="16" style="-fx-padding: 0 0 20 0;">
+                <Label text="Navigator Bar" styleClass="sidebar-title" style="-fx-font-size: 30px; -fx-font-family: 'Serif'; -fx-font-weight: bold; -fx-text-fill: #fff; -fx-padding: 16 0 24 0;" alignment="CENTER" />
+            </VBox>
+            <Separator style="-fx-background-color: #314060;"/>
+            <VBox spacing="8" style="-fx-padding: 20 0 0 0;">
+                <Button text="Reclamation View" styleClass="sidebar-link" onAction="#goToReclamationView"/>
+                <Button text="Add Type" styleClass="sidebar-link"/>
+                <Button text="Logout" styleClass="sidebar-link" onAction="#logout" />
+            </VBox>
+        </VBox>
+
+        <!-- Main Content Area under Top Bar and Sidebar -->
+        <VBox spacing="20" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" AnchorPane.bottomAnchor="0.0" style="-fx-padding: 30 40 30 40;">
+            <!-- Top Bar -->
+            <HBox alignment="CENTER_RIGHT" spacing="12" style="-fx-padding: 0 0 20 0;">
+                <Label text=" Type Reclamation" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #314060;"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <!-- Type Reclamation Form & List -->
+            <HBox spacing="24" alignment="CENTER_LEFT">
+                <VBox spacing="12" alignment="CENTER_LEFT" style="-fx-background-color: #fff; -fx-background-radius: 12; -fx-padding: 18; -fx-effect: dropshadow(gaussian, #31406022, 8, 0, 0, 0);">
+                    <Label text="Ajouter un type" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #314060;"/>
+                    <HBox spacing="10" alignment="CENTER">
+                        <TextField fx:id="typeNameField" promptText="Nom du type" prefWidth="200.0" prefHeight="40.0" style="-fx-background-color: #f8fafc; -fx-text-fill: #314060; -fx-font-size: 16px; -fx-background-radius: 8px; -fx-padding: 5px 10px;"/>
+                        <Button text="Ajouter" onAction="#handleAddType" style="-fx-background-color: #00b4d8; -fx-text-fill: #fff; -fx-font-size: 16px; -fx-background-radius: 8px; -fx-font-weight: bold;"/>
+                    </HBox>
+                </VBox>
+                <VBox spacing="12" alignment="CENTER_LEFT" style="-fx-background-color: #fff; -fx-background-radius: 12; -fx-padding: 18; -fx-effect: dropshadow(gaussian, #31406022, 8, 0, 0, 0);">
+                    <Label text="Liste des types" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #314060;"/>
+                    <ListView fx:id="typeListView" prefWidth="300.0" prefHeight="200.0" style="-fx-background-color: #f8fafc; -fx-background-radius: 8px; -fx-padding: 10px;"/>
+                    <HBox spacing="8" alignment="CENTER">
+                        <Button text="Modifier" onAction="#handleModifyType" style="-fx-background-color: #43bfae; -fx-text-fill: #fff; -fx-font-size: 15px; -fx-background-radius: 8px; -fx-font-weight: bold;"/>
+                        <Button text="Supprimer" onAction="#handleDeleteType" style="-fx-background-color: #e74c3c; -fx-text-fill: #fff; -fx-font-size: 15px; -fx-background-radius: 8px; -fx-font-weight: bold;"/>
+                        <Button text="↩️ Retour" onAction="#goBackToHome" style="-fx-background-color: #a0522d; -fx-text-fill: #fff; -fx-font-size: 15px; -fx-background-radius: 8px; -fx-font-weight: bold;"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+
+            <!-- Footer -->
+            <Label alignment="CENTER" text=" 2025 Wings Solutions" styleClass="wings-title-footer"/>
+        </VBox>
+    </children>
+</AnchorPane>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+<?import javafx.scene.chart.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.StatisticsController"
+            prefHeight="700.0" prefWidth="1200.0" minHeight="400.0" minWidth="700.0"
+            style="-fx-background-color: #f0f2f5;"
+            stylesheets="@../styles/statistics.css">
+    
+    <children>
+        <!-- Admin Bar Include -->
+        <fx:include source="/fxml/AdminBar.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+
+        <!-- Sidebar -->
+        <VBox spacing="0" prefWidth="200" style="-fx-background-color: linear-gradient(to bottom, #283593, #1565c0); -fx-background-radius: 0 24 24 0; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 2, 0);" 
+              AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0" AnchorPane.bottomAnchor="0.0">
+            <VBox alignment="CENTER" spacing="16" style="-fx-padding: 20;">
+                <Label text="Statistics" style="-fx-font-size: 30px; -fx-font-family: 'Segoe UI'; -fx-font-weight: bold; -fx-text-fill: #ffffff;" />
+            </VBox>
+            <Separator style="-fx-background-color: rgba(255,255,255,0.2);"/>
+            <VBox spacing="8" style="-fx-padding: 20;">
+                                <Button text="Create Event" styleClass="sidebar-link" onAction="#goToCreateEvent" />
+                <Button text="View Events" styleClass="sidebar-link" onAction="#goToEventView" />
+                <Button text="Event Types" styleClass="sidebar-link" onAction="#goToTypeEventManagement" />
+            </VBox>
+        </VBox>
+
+        <!-- Main Content Area with ScrollPane -->
+        <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;" 
+                   AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" AnchorPane.bottomAnchor="0.0">
+            <content>
+                <VBox spacing="20" style="-fx-padding: 30;">
+                    <!-- Statistics Cards Row -->
+                    <HBox spacing="20">
+                        <!-- Total Events Card -->
+                        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                            <Label text="Total Events" styleClass="stat-title"/>
+                            <Label fx:id="totalEventsLabel" text="0" styleClass="stat-value"/>
+                            <Label text="All time events" styleClass="stat-subtitle"/>
+                        </VBox>
+                        
+                        <!-- Average Price Card -->
+                        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                            <Label text="Average Price" styleClass="stat-title"/>
+                            <Label fx:id="averagePriceLabel" text="0 DT" styleClass="stat-value"/>
+                            <Label text="Per event" styleClass="stat-subtitle"/>
+                        </VBox>
+                        
+                        <!-- Most Popular Type Card -->
+                        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                            <Label text="Most Popular Type" styleClass="stat-title"/>
+                            <Label fx:id="popularTypeLabel" text="N/A" styleClass="stat-value"/>
+                            <Label text="Based on bookings" styleClass="stat-subtitle"/>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Charts Row -->
+                    <HBox spacing="20">
+                        <!-- Events by Type Chart -->
+                        <VBox styleClass="chart-card" HBox.hgrow="ALWAYS">
+                            <Label text="Events by Type" styleClass="chart-title"/>
+                            <PieChart fx:id="eventsByTypeChart" legendVisible="true" />
+                        </VBox>
+                        
+                        <!-- Monthly Trends Chart -->
+                        <VBox styleClass="chart-card" HBox.hgrow="ALWAYS">
+                            <Label text="Monthly Trends" styleClass="chart-title"/>
+                            <BarChart fx:id="monthlyTrendsChart">
+                                <xAxis>
+                                    <CategoryAxis label="Month"/>
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis label="Events"/>
+                                </yAxis>
+                            </BarChart>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Lists Row -->
+                    <HBox spacing="20">
+                        <!-- Events by Type List -->
+                        <VBox styleClass="list-card" HBox.hgrow="ALWAYS">
+                            <Label text="Events by Type Breakdown" styleClass="list-title"/>
+                            <ListView fx:id="eventsByTypeList" prefHeight="200"/>
+                        </VBox>
+                        
+                        <!-- Events by Month List -->
+                        <VBox styleClass="list-card" HBox.hgrow="ALWAYS">
+                            <Label text="Monthly Distribution" styleClass="list-title"/>
+                            <ListView fx:id="eventsByMonthList" prefHeight="200"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.EventViewController"
+            prefHeight="700.0" prefWidth="1200.0" minHeight="400.0" minWidth="700.0" maxHeight="-1.0" maxWidth="-1.0"
+            style="-fx-background-color: #f8fafc;"
+            stylesheets="@backborad.css">
+    <children>
+        <!-- Admin Bar Include -->
+        <fx:include source="/fxml/AdminBar.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+
+        <!-- Sidebar under Top Bar -->
+        <VBox spacing="0" prefWidth="200" style="-fx-background-color: #00b4d8; -fx-background-radius: 0 24 24 0; -fx-padding: 36 0 0 0; -fx-min-width: 200; -fx-max-width: 200; -fx-pref-width: 200;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0" AnchorPane.bottomAnchor="0.0">
+            <VBox alignment="CENTER" spacing="16" style="-fx-padding: 0 0 20 0;">
+                <Label text="Navigator Bar" styleClass="sidebar-title" style="-fx-font-size: 30px; -fx-font-family: 'Serif'; -fx-font-weight: bold; -fx-text-fill: #fff; -fx-padding: 16 0 24 0;" alignment="CENTER" />
+            </VBox>
+            <Separator style="-fx-background-color: #314060;"/>
+            <VBox spacing="8" style="-fx-padding: 20 0 0 0;">
+                                <Button text="Create Event" styleClass="sidebar-link" onAction="#goToCreateEvent" />
+                <Button text="Event Types" styleClass="sidebar-link" onAction="#goToTypeEventManagement" />
+                <Button text="Statistics" styleClass="sidebar-link" onAction="#goToStatistics" />
+            </VBox>
+        </VBox>
+
+        <!-- Main Content Area -->
+        <VBox spacing="20" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" AnchorPane.bottomAnchor="0.0" style="-fx-padding: 30 40 30 40;">
+            <!-- Top Bar -->
+            <HBox alignment="CENTER_RIGHT" spacing="12" style="-fx-padding: 0 0 20 0;">
+                <Label text="Event List" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #314060;"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <!-- Search Bar -->
+            <HBox spacing="12" style="-fx-padding: 0 0 12 0;">
+                <TextField fx:id="searchField" promptText="Search events..." prefWidth="300" styleClass="form-field"/>
+                <ComboBox fx:id="filterTypeComboBox" promptText="Filter by type" prefWidth="200" styleClass="form-field"/>
+                <ComboBox fx:id="filterStatusComboBox" promptText="Filter by status" prefWidth="200" styleClass="form-field"/>
+                <Button text="Search" onAction="#handleSearch" 
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 10; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <!-- Event List -->
+            <VBox spacing="10" VBox.vgrow="ALWAYS" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, #31406022, 8, 0, 0, 0);">
+                <HBox alignment="CENTER_LEFT" spacing="20">
+                    <Label text="Events" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #314060;"/>
+                    <Pane HBox.hgrow="ALWAYS" />
+                    <Button text="Edit Selected" onAction="#handleEdit" 
+                            style="-fx-background-color: #43bfae; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 10; -fx-font-weight: bold;"/>
+                    <Button text="Delete Selected" onAction="#handleDelete" 
+                            style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 10; -fx-font-weight: bold;"/>
+                </HBox>
+                <TableView fx:id="eventTable" VBox.vgrow="ALWAYS" style="-fx-background-radius: 10;">
+                    <columns>
+                        <TableColumn fx:id="titleColumn" text="Title"/>
+                        <TableColumn fx:id="dateColumn" text="Date"/>
+                        <TableColumn fx:id="descriptionColumn" text="Description"/>
+                        <TableColumn fx:id="locationColumn" text="Location"/>
+                        <TableColumn fx:id="statusColumn" text="Status"/>
+                        <TableColumn fx:id="durationColumn" text="Duration"/>
+                        <TableColumn fx:id="availableSeatsColumn" text="Available Seats"/>
+                        <TableColumn fx:id="typeColumn" text="Event Type"/>
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <!-- Footer -->
+            <Label alignment="CENTER" text=" 2025 Wings Solutions" styleClass="wings-title-footer"/>
+        </VBox>
+    </children>
+</AnchorPane>

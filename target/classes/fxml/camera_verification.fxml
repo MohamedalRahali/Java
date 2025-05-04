@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="controllers.CameraVerificationController"
+      spacing="15" alignment="CENTER" style="-fx-background-color: #f5f5f5;">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Vérification par Caméra" 
+           style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #8B4513;"/>
+
+    <ImageView fx:id="cameraView" fitWidth="400" fitHeight="300" 
+               style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="startButton" text="Démarrer la Caméra"
+                style="-fx-background-color: #8B4513; -fx-text-fill: white;"/>
+        <Button fx:id="verifyButton" text="Vérifier"
+                style="-fx-background-color: #FFA500; -fx-text-fill: black;"/>
+        <Button fx:id="cancelButton" text="Annuler"
+                style="-fx-background-color: #CD853F; -fx-text-fill: white;"/>
+    </HBox>
+
+    <Label fx:id="statusLabel" wrapText="true" alignment="CENTER"
+           style="-fx-text-fill: #8B4513;"/>
+</VBox>

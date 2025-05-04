@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainController">
+    <children>
+        <TableView fx:id="eventTable" layoutX="20.0" layoutY="250.0" prefWidth="760.0">
+            <columns>
+                <TableColumn fx:id="colTitle" prefWidth="100" text="Titre" />
+                <TableColumn fx:id="colDate" prefWidth="100" text="Date" />
+                <TableColumn fx:id="colLieux" prefWidth="100" text="Lieu" />
+                <TableColumn fx:id="colStatus" prefWidth="100" text="Statut" />
+                <TableColumn fx:id="colNbPlaces" prefWidth="100" text="Places" />
+            </columns>
+        </TableView>
+
+        <TextField fx:id="tfTitle" layoutX="20.0" layoutY="20.0" promptText="Titre" />
+        <DatePicker fx:id="dpDate" layoutX="32.0" layoutY="73.0" />
+        <TextField fx:id="tfDescription" layoutX="200.0" layoutY="20.0" promptText="Description" />
+        <TextField fx:id="tfLieux" layoutX="335.0" layoutY="73.0" promptText="Lieu" />
+        <TextField fx:id="tfStatus" layoutX="400.0" layoutY="20.0" promptText="Statut" />
+        <TextField fx:id="tfDuree" layoutX="525.0" layoutY="73.0" promptText="Durée" />
+        <TextField fx:id="tfNbPlaces" layoutX="600.0" layoutY="20.0" promptText="Places disponibles" />
+
+        <Button layoutX="20.0" layoutY="120.0" onAction="#ajouterEvent" text="Ajouter" />
+        <Button layoutX="120.0" layoutY="120.0" onAction="#modifierEvent" text="Modifier" />
+        <Button layoutX="220.0" layoutY="120.0" onAction="#supprimerEvent" text="Supprimer" />
+
+    </children>
+</AnchorPane>

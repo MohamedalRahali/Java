@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReservationController" 
+      spacing="20" style="-fx-background-color: #f5f5f5;" alignment="CENTER">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Text text="Réservation" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-fill: #8B4513;"/>
+
+    <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-border-color: #8B4513; -fx-border-width: 2; -fx-border-radius: 10;">
+        <Label text="Détails de l'événement" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #8B4513;"/>
+        
+        <VBox spacing="10">
+            <HBox spacing="10">
+                <Label text="Événement:" style="-fx-font-weight: bold; -fx-text-fill: #8B4513;"/>
+                <Label fx:id="eventNameLabel" style="-fx-text-fill: black;"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Type:" style="-fx-font-weight: bold; -fx-text-fill: #8B4513;"/>
+                <Label fx:id="eventTypeLabel" style="-fx-text-fill: black;"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Lieu:" style="-fx-font-weight: bold; -fx-text-fill: #8B4513;"/>
+                <Label fx:id="eventLocationLabel" style="-fx-text-fill: black;"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Places totales:" style="-fx-font-weight: bold; -fx-text-fill: #8B4513;"/>
+                <Label fx:id="totalPlacesLabel" style="-fx-text-fill: black;"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Places disponibles:" style="-fx-font-weight: bold; -fx-text-fill: #8B4513;"/>
+                <Label fx:id="availablePlacesLabel" style="-fx-text-fill: black;"/>
+            </HBox>
+        </VBox>
+
+        <Separator style="-fx-background-color: #8B4513;"/>
+
+        <Label text="Informations de réservation" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #8B4513;"/>
+        
+        <VBox spacing="10">
+            <Label text="Votre nom" style="-fx-text-fill: #8B4513;"/>
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <TextField fx:id="nameField" promptText="Entrez votre nom" HBox.hgrow="ALWAYS"
+                          style="-fx-background-color: #FFA500; -fx-text-fill: black; -fx-prompt-text-fill: #8B4513;"/>
+                <Button fx:id="nameMicButton" style="-fx-background-color: transparent;">
+                    <graphic>
+                        <ImageView fitHeight="20" fitWidth="20">
+                            <Image url="@../images/mic.svg"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </HBox>
+            
+            <Label text="Nombre de places" style="-fx-text-fill: #8B4513;"/>
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <TextField fx:id="nbPlacesField" promptText="Entrez le nombre de places" HBox.hgrow="ALWAYS"
+                          style="-fx-background-color: #FFA500; -fx-text-fill: black; -fx-prompt-text-fill: #8B4513;"/>
+                <Button fx:id="placesMicButton" style="-fx-background-color: transparent;">
+                    <graphic>
+                        <ImageView fitHeight="20" fitWidth="20">
+                            <Image url="@../images/mic.svg"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </HBox>
+            
+            <Label text="Email" style="-fx-text-fill: #8B4513;"/>
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <TextField fx:id="emailField" promptText="votre@email.com" HBox.hgrow="ALWAYS"
+                          style="-fx-background-color: #FFA500; -fx-text-fill: black; -fx-prompt-text-fill: #8B4513;"/>
+                <Button fx:id="emailMicButton" style="-fx-background-color: transparent;">
+                    <graphic>
+                        <ImageView fitHeight="20" fitWidth="20">
+                            <Image url="@../images/mic.svg"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </HBox>
+        </VBox>
+
+        <HBox spacing="10" alignment="CENTER">
+            <Button fx:id="cameraButton" text="Ouvrir Caméra" 
+                    style="-fx-background-color: #FFA500; -fx-text-fill: black; -fx-font-weight: bold; -fx-padding: 10 20;"/>
+            <Button fx:id="reserveButton" text="Réserver" 
+                    style="-fx-background-color: #8B4513; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;"/>
+        </HBox>
+    </VBox>
+
+    <Button fx:id="backButton" text="Retour" 
+            style="-fx-background-color: #FFA500; -fx-text-fill: black; -fx-font-weight: bold; -fx-padding: 10 20;"/>
+</VBox>

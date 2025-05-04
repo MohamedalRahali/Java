@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Leaflet Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <style>
+        html, body, #map {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        .leaflet-container {
+            background: #f8fafc !important;
+        }
+        .leaflet-tile-container {
+            pointer-events: none;
+            will-change: transform;
+        }
+        .leaflet-tile {
+            box-shadow: none !important;
+            border: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            image-rendering: pixelated;
+        }
+        .custom-marker {
+            background-color: #3388ff;
+            border: 3px solid white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .custom-marker::after {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .pulse-marker {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+    let map, marker, currentLayer;
+    const baseLayers = {
+        "OpenStreetMap": L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            minZoom: 3,
+            keepBuffer: 10,
+            updateWhenIdle: true,
+            crossOrigin: true,
+            detectRetina: false,
+            attribution: '© OpenStreetMap contributors'
+        }),
+        "Satellite": L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 19,
+            minZoom: 3,
+            keepBuffer: 10,
+            updateWhenIdle: true,
+            crossOrigin: true,
+            detectRetina: false,
+            attribution: '© Esri'
+        }),
+        "Terrain": L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+            maxZoom: 17,
+            minZoom: 3,
+            keepBuffer: 10,
+            updateWhenIdle: true,
+            crossOrigin: true,
+            detectRetina: false,
+            attribution: '© OpenTopoMap'
+        })
+    };
+
+    window.L_DISABLE_3D = true;
+    L.Browser.any3d = false;
+    L.DomEvent.TRANSITION = false;
+    let mapInitialized = false;
+    let mapReady = false;
+
+    function initMap() {
+        if (mapInitialized) {
+            console.log("Map already initialized, skipping");
+            if (window.javaBridge) {
+                window.javaBridge.onMapReady();
+            }
+            return;
+        }
+
+        try {
+            console.log("Initializing map...");
+
+            // Ensure map container exists and is properly sized
+            let mapContainer = document.getElementById('map');
+            if (!mapContainer) {
+                console.log("Creating map container");
+                mapContainer = document.createElement('div');
+                mapContainer.id = 'map';
+                mapContainer.style.width = '100%';
+                mapContainer.style.height = '100%';
+                document.body.appendChild(mapContainer);
+            } else {
+                // Ensure container has proper dimensions
+                mapContainer.style.width = '100%';
+                mapContainer.style.height = '100%';
+            }
+
+            // Initialize map with more robust settings
+            map = L.map('map', {
+                preferCanvas: true,
+                zoomControl: false,
+                attributionControl: false,
+                fadeAnimation: false,
+                zoomAnimation: false,
+                markerZoomAnimation: false,
+                renderer: L.canvas(),
+                inertia: false,
+                tap: false,  // Important for JavaFX WebView compatibility
+                touchZoom: false,
+                scrollWheelZoom: false,
+                doubleClickZoom: false
+            }).setView([36.8065, 10.1815], 13);
+
+            // Initialize base layers
+            setMapType("OpenStreetMap");
+
+            // Create marker with improved visibility
+            const customIcon = L.divIcon({
+                className: 'custom-marker pulse-marker',
+                iconSize: [24, 24]
+            });
+
+            marker = L.marker(map.getCenter(), {
+                icon: customIcon,
+                draggable: true
+            }).addTo(map);
+
+            marker.on('dragend', function(e) {
+                updatePosition(e.target.getLatLng());
+            });
+
+            map.on('click', function(e) {
+                marker.setLatLng(e.latlng);
+                updatePosition(e.latlng);
+            });
+
+            // Handle map ready state
+            map.whenReady(function() {
+                console.log("Leaflet map fully initialized");
+                mapReady = true;
+                mapInitialized = true;
+                forceRedraw();
+
+                if (window.javaBridge) {
+                    console.log("Notifying JavaBridge: map ready");
+                    window.javaBridge.onMapReady();
+                }
+            });
+
+            // Additional safety check in case whenReady doesn't fire
+            setTimeout(function() {
+                if (!mapReady && window.javaBridge) {
+                    console.warn("Map ready check fallback triggered");
+                    window.javaBridge.onMapReady();
+                }
+            }, 1000);
+
+        } catch (e) {
+            console.error("Map initialization failed:", e);
+            if (window.javaBridge) {
+                window.javaBridge.onMapReady(); // Still notify to prevent deadlock
+            }
+        }
+    }
+    function updatePosition(pos) {
+        if (!mapReady) {
+            console.warn("Map not ready for position update");
+            return;
+        }
+        if (window.javaBridge && typeof window.javaBridge.onLocationChanged === 'function') {
+            if (pos.lat >= -90 && pos.lat <= 90 && pos.lng >= -180 && pos.lng <= 180) {
+                console.log("Updating position: lat=" + pos.lat + ", lng=" + pos.lng);
+                window.javaBridge.onLocationChanged(pos.lat, pos.lng);
+            } else {
+                console.error("Invalid coordinates: lat=" + pos.lat + ", lng=" + pos.lng);
+            }
+        }
+    }
+
+    function setMapView(lat, lng, zoom = 15) {
+        if (!map || !marker) {
+            console.error("Map or marker not initialized");
+            return false;
+        }
+
+        const newPos = L.latLng(lat, lng);
+
+        // Mise à jour de la vue
+        map.setView(newPos, zoom, {
+            animate: false,
+            reset: true
+        });
+
+        // Mise à jour du marqueur
+        marker.setLatLng(newPos);
+
+        // Confirmation vers Java
+        if (window.javaBridge && typeof window.javaBridge.onLocationChanged === 'function') {
+            window.javaBridge.onLocationChanged(lat, lng);
+        }
+
+        return true;
+    }
+
+    function setMapType(type) {
+        if (!map || !baseLayers[type]) {
+            console.warn("Invalid map type or map not initialized: " + type);
+            return;
+        }
+
+        try {
+            if (currentLayer) {
+                map.removeLayer(currentLayer);
+            }
+            currentLayer = baseLayers[type];
+            currentLayer.addTo(map);
+            marker.addTo(map);
+            forceRedraw();
+            console.log("Map type changed to: " + type);
+        } catch (e) {
+            console.error("Set map type error: " + e);
+        }
+    }
+
+    function setZoom(zoomLevel) {
+        if (!map || !mapReady) {
+            console.warn("Map not initialized for zoom");
+            return;
+        }
+
+        try {
+            map.setZoom(zoomLevel);
+            forceRedraw();
+            console.log("Zoom set to: " + zoomLevel);
+        } catch (e) {
+            console.error("Set zoom error: " + e);
+        }
+    }
+
+    function forceRedraw() {
+        if (!map || !mapReady) {
+            console.warn("Map not initialized for redraw");
+            return;
+        }
+
+        try {
+            map.invalidateSize({ animate: false, pan: false });
+            map._resetView(map.getCenter(), map.getZoom(), true);
+            console.log("Map redrawn");
+            // Force tile reload
+            if (currentLayer) {
+                currentLayer.redraw();
+            }
+        } catch (e) {
+            console.error("Redraw error: " + e);
+        }
+    }
+
+    function initializeWithRetry() {
+        let attempts = 0;
+        const maxAttempts = 3;
+        function tryInit() {
+            try {
+                initMap();
+            } catch (e) {
+                console.error("Initialization attempt " + (attempts + 1) + " failed: " + e);
+                if (attempts < maxAttempts) {
+                    attempts++;
+                    setTimeout(tryInit, 500);
+                }
+            }
+        }
+        tryInit();
+    }
+
+    document.addEventListener('DOMContentLoaded', initializeWithRetry);
+    window.onload = initializeWithRetry;
+</script>
+</body>
+</html>

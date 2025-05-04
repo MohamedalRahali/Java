@@ -1,0 +1,10 @@
+.env
+*.json
+*.pem
+*.key
+*.p12
+# Ignore credential files
+src/main/resources/credentials/
+src/main/resources/google-credentials.json
+target/classes/credentials/
+target/classes/google-credentials.json

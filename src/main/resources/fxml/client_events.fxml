@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.ClientEventsController"
+            prefHeight="800.0" prefWidth="1300.0"
+            style="-fx-background-color: linear-gradient(to bottom right, #f8fafc, #e0e7ef);">
+
+    <children>
+        <!-- HEADER: Contact info and social -->
+        <VBox spacing="0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <fx:include source="UserBar.fxml" />
+           
+            <!-- NAVIGATION BAR (like Home) -->
+            <HBox style="-fx-background-color: white; -fx-padding: 10 20; -fx-border-color: #eee; -fx-border-width: 1 0;"
+                  alignment="CENTER" spacing="20">
+             <!-- Language and Mode -->
+                <ComboBox fx:id="languageComboBox" prefWidth="150"/>
+                <Button fx:id="toggleModeButton" text="Mode Événement" onAction="#toggleMode"
+                        style="-fx-background-color: #d4a373; -fx-text-fill: #2d1f17; -fx-background-radius: 8; -fx-padding: 8 15; -fx-font-weight: bold;"/>
+            </HBox>
+        </VBox>
+
+        <!-- MAIN CONTENT -->
+        <HBox spacing="40" AnchorPane.topAnchor="110" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="60">
+            <!-- Left: Search + Events List -->
+            <VBox spacing="25" alignment="TOP_CENTER" prefWidth="800" style="-fx-padding: 30 0 0 50;">
+                <Label text="Espace Client - Événements"
+                       style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2d3748;"/>
+                <!-- Search Bar -->
+                <HBox spacing="10" alignment="CENTER_LEFT" prefWidth="700">
+                    <TextField fx:id="searchField" promptText="Rechercher un événement..."
+                               style="-fx-background-radius: 8px; -fx-padding: 8px; -fx-background-color: white; -fx-border-color: #d4a373; -fx-border-radius: 8px; -fx-border-width: 1px;"/>
+                </HBox>
+                <!-- Events List -->
+                <ScrollPane fitToWidth="true" prefWidth="700" prefHeight="500"
+                            style="-fx-background-color: transparent; -fx-background: transparent;">
+                    <content>
+                        <FlowPane fx:id="eventsContainer" hgap="20" vgap="20" prefWrapLength="700"
+                                  style="-fx-padding: 10;">
+                            <!-- Les tickets seront ajoutés dynamiquement ici -->
+                        </FlowPane>
+                    </content>
+                </ScrollPane>
+            </VBox>
+
+            <!-- Right: Chatbot -->
+            <VBox prefWidth="400" maxWidth="420" minWidth="350" alignment="TOP_CENTER"
+                  style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 10, 0, 0, 0); -fx-padding: 0 20 0 20;">
+                <!-- Chatbot Header -->
+                <HBox alignment="CENTER" style="-fx-background-color: #d4a373; -fx-background-radius: 10 10 0 0; -fx-padding: 10;">
+                    <Label text="Assistant IA Events" style="-fx-text-fill: white; -fx-font-weight: bold;">
+                        <font>
+                            <Font name="Georgia" size="16.0"/>
+                        </font>
+                    </Label>
+                </HBox>
+                <!-- Chat Area -->
+                <ScrollPane fx:id="chatScrollPane" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent; -fx-background: transparent;">
+                    <VBox fx:id="chatMessagesBox" spacing="10" style="-fx-padding: 10;">
+                        <!-- Les messages seront ajoutés ici dynamiquement -->
+                    </VBox>
+                </ScrollPane>
+                <!-- Chat Input -->
+                <HBox spacing="10" style="-fx-padding: 10; -fx-background-color: #f8f1e6; -fx-background-radius: 0 0 10 10;">
+                    <TextField fx:id="chatInput" promptText="Posez votre question..." HBox.hgrow="ALWAYS"
+                               style="-fx-background-radius: 20; -fx-padding: 8;">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                    </TextField>
+                    <Button fx:id="sendButton" text="Envoyer" onAction="#handleChatSend"
+                            style="-fx-background-color: #d4a373; -fx-text-fill: white; -fx-background-radius: 20;">
+                        <font>
+                            <Font name="System Bold" size="14.0"/>
+                        </font>
+                    </Button>
+                </HBox>
+            </VBox>
+        </HBox>
+
+        <!-- FOOTER -->
+        <HBox AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+              style="-fx-background-color: #333; -fx-padding: 20;" alignment="CENTER">
+            <Label text="© 2025 Wings Solutions Events Team" style="-fx-text-fill: white;">
+                <font>
+                    <Font size="12"/>
+                </font>
+            </Label>
+        </HBox>
+    </children>
+    <!-- BACK BUTTON for navigation -->
+    <Button fx:id="backButton" text="Retour" layoutX="1150" layoutY="760"
+            style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 8;"
+            prefWidth="120" prefHeight="40" />
+</AnchorPane>

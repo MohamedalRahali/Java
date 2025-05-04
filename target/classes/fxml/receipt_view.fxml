@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<VBox alignment="CENTER" spacing="20" style="-fx-background-color: white; -fx-padding: 20;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReceiptController">
+    <children>
+        <VBox alignment="CENTER" style="-fx-background-color: #f8f9fa; -fx-padding: 20; -fx-background-radius: 10;">
+            <Text text="Confirmation de Réservation" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+            
+            <VBox spacing="10" style="-fx-padding: 20 0;">
+                <Label text="Détails de l'événement" style="-fx-font-weight: bold; -fx-font-size: 16;"/>
+                <Text fx:id="eventTitleText" style="-fx-font-size: 14;"/>
+                <Text fx:id="eventDateText" style="-fx-font-size: 14;"/>
+                <Text fx:id="eventLocationText" style="-fx-font-size: 14;"/>
+            </VBox>
+            
+            <VBox spacing="10" style="-fx-padding: 20 0;">
+                <Label text="Détails de la réservation" style="-fx-font-weight: bold; -fx-font-size: 16;"/>
+                <Text fx:id="reservationNameText" style="-fx-font-size: 14;"/>
+                <Text fx:id="reservationEmailText" style="-fx-font-size: 14;"/>
+                <Text fx:id="reservationPlacesText" style="-fx-font-size: 14;"/>
+            </VBox>
+
+            <VBox spacing="10" alignment="CENTER" style="-fx-padding: 20 0;">
+                <Label text="Code QR" style="-fx-font-weight: bold; -fx-font-size: 16;"/>
+                <ImageView fx:id="qrCodeImageView" fitHeight="150.0" fitWidth="150.0" preserveRatio="true"/>
+            </VBox>
+        </VBox>
+
+        <HBox spacing="10" alignment="CENTER">
+            <Button fx:id="backButton" text="Retour" onAction="#handleBackButton" style="-fx-background-color: #6c757d; -fx-text-fill: white;"/>
+            <Button fx:id="downloadPdfButton" text="Télécharger PDF" onAction="#handleDownloadPdf" style="-fx-background-color: #28a745; -fx-text-fill: white;"/>
+        </HBox>
+    </children>
+</VBox>

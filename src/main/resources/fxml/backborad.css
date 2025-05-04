@@ -1,0 +1,46 @@
+/* Animation for hover on top bar and sidebar buttons/links */
+
+/* Top bar buttons */
+.button.topbar-link {
+    -fx-background-color: transparent;
+    background-color: transparent;
+    -fx-text-fill: #fff;
+    -fx-font-size: 16px;
+    font-size: 16px;
+    -fx-font-weight: bold;
+    font-weight: bold;
+    -fx-transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+    transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+.button.topbar-link:hover {
+    -fx-background-color: #00b4d8;
+    background-color: #00b4d8;
+    -fx-text-fill: #111;
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+    -fx-effect: dropshadow(gaussian, #00b4d8, 8, 0.4, 0, 0);
+}
+
+/* Sidebar buttons */
+.button.sidebar-link {
+    -fx-background-color: transparent;
+    background-color: transparent;
+    -fx-text-fill: #fff;
+    -fx-font-size: 16px;
+    font-size: 16px;
+    -fx-transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+    transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+.button.sidebar-link:hover {
+    -fx-background-color: #fff;
+    background-color: #fff;
+    -fx-text-fill: #00b4d8;
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+    -fx-effect: dropshadow(gaussian, #fff, 8, 0.4, 0, 0);
+}
+
+/* Sidebar label/title */
+.label.sidebar-title {
+    -fx-text-fill: #fff;
+}

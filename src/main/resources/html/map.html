@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Event Location Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <style>
+        html, body, #map {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        .custom-marker {
+            background-color: #3388ff;
+            border: 3px solid white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .custom-marker::after {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .pulse-marker {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+    let map, marker;
+    const defaultLocation = [36.8065, 10.1815]; // Tunisia default location
+
+    function initMap() {
+        // Initialize map
+        map = L.map('map', {
+            preferCanvas: true,
+            zoomControl: true,
+            attributionControl: true,
+            fadeAnimation: false,
+            zoomAnimation: false,
+            markerZoomAnimation: false
+        }).setView(defaultLocation, 13);
+
+        // Add OpenStreetMap layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Create custom marker
+        const customIcon = L.divIcon({
+            className: 'custom-marker pulse-marker',
+            iconSize: [24, 24]
+        });
+
+        // Add marker
+        marker = L.marker(defaultLocation, {
+            icon: customIcon,
+            draggable: true
+        }).addTo(map);
+
+        // Handle marker drag
+        marker.on('dragend', function(e) {
+            const pos = e.target.getLatLng();
+            updateLocation(pos.lat, pos.lng);
+        });
+
+        // Handle map click
+        map.on('click', function(e) {
+            marker.setLatLng(e.latlng);
+            updateLocation(e.latlng.lat, e.latlng.lng);
+        });
+
+        // Notify Java that map is ready
+        if (window.app) {
+            window.app.onMapReady();
+        }
+    }
+
+    function updateLocation(lat, lng) {
+        if (window.app) {
+            window.app.onMapClick(lat, lng);
+        }
+    }
+
+    function setLocation(lat, lng) {
+        if (map && marker) {
+            const pos = L.latLng(lat, lng);
+            map.setView(pos, 15, { animate: false });
+            marker.setLatLng(pos);
+        }
+    }
+
+    // Initialize map when DOM is ready
+    document.addEventListener('DOMContentLoaded', initMap);
+</script>
+</body>
+</html>

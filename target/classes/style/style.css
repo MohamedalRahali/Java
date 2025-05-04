@@ -1,0 +1,89 @@
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #2d1f17, #4d3428);
+}
+
+.label {
+    -fx-text-fill: white;
+    -fx-font-family: "Georgia";
+}
+
+.button {
+    -fx-background-color: #e1701a;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: derive(#e1701a, 10%);
+}
+
+.text-field, .password-field, .combo-box, .date-picker {
+    -fx-background-radius: 10;
+    -fx-padding: 8;
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.alert {
+    -fx-background-color: white;
+}
+
+.alert .header-panel {
+    -fx-background-color: #4d3428;
+}
+
+.alert .header-panel .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.menu-button {
+    -fx-background-color: #e1701a;
+    -fx-text-fill: #fff3e0;
+    -fx-font-size: 14px;
+    -fx-background-radius: 12px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 10 20;
+}
+
+.menu-button:hover {
+    -fx-background-color: derive(#e1701a, 10%);
+}
+
+.choice-box {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-padding: 8;
+    -fx-font-size: 14px;
+    -fx-min-width: 200;
+}
+
+.list-view {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-border-color: transparent;
+    -fx-control-inner-background: rgba(255, 255, 255, 0.1);
+    -fx-selection-bar: #a0522d;
+    -fx-selection-bar-non-focused: #8b4513;
+    -fx-cell-size: 120px;
+    -fx-padding: 5px;
+}
+
+.list-cell {
+    -fx-text-fill: #f9c89b;
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+.list-cell:selected {
+    -fx-background-color: #a0522d;
+}
+
+.date-picker {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+} 

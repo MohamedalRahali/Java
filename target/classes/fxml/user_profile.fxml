@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.UserProfileController"
+            prefHeight="800.0" prefWidth="1200.0"
+            style="-fx-background-color: white;">
+    <children>
+        <!-- Background Image -->
+        <StackPane AnchorPane.topAnchor="80" AnchorPane.bottomAnchor="60" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <ImageView fitHeight="660" fitWidth="1200" preserveRatio="false">
+                <Image url="@/assets/images/slider-bg.png"/>
+                <effect>
+                    <GaussianBlur radius="5"/>
+                </effect>
+            </ImageView>
+        </StackPane>
+
+        <!-- Header Section -->
+        <VBox spacing="0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <fx:include source="UserBar.fxml" />
+        </VBox>
+
+        <!-- Main Profile Section -->
+        <VBox alignment="CENTER" spacing="30" layoutX="300.0" layoutY="200.0" prefWidth="600" prefHeight="500">
+            <Text text="Mon Profil " style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-fill: white;">
+                <effect>
+                    <DropShadow radius="10" spread="0.5"/>
+                </effect>
+            </Text>
+            <GridPane hgap="10" vgap="15" style="-fx-background-color: rgba(255,255,255,0.85); -fx-background-radius: 18; -fx-padding: 32;">
+                <Label text="First Name:" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TextField fx:id="firstNameField" GridPane.rowIndex="0" GridPane.columnIndex="1" style="-fx-background-radius: 8; -fx-padding: 6;"/>
+                <Label text="Last Name:" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TextField fx:id="lastNameField" GridPane.rowIndex="1" GridPane.columnIndex="1" style="-fx-background-radius: 8; -fx-padding: 6;"/>
+                <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TextField fx:id="emailField" GridPane.rowIndex="2" GridPane.columnIndex="1" style="-fx-background-radius: 8; -fx-padding: 6;"/>
+                <Label text="Password:" GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <PasswordField fx:id="passwordField" GridPane.rowIndex="3" GridPane.columnIndex="1" style="-fx-background-radius: 8; -fx-padding: 6;"/>
+                <Label text="Date of Birth:" GridPane.rowIndex="4" GridPane.columnIndex="0" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <DatePicker fx:id="dobPicker" GridPane.rowIndex="4" GridPane.columnIndex="1" style="-fx-background-radius: 8; -fx-padding: 6;"/>
+            </GridPane>
+            <Button text="Save Changes" fx:id="saveButton"
+                    style="-fx-background-color: #ff7043; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 12 32; -fx-background-radius: 25;">
+                <effect>
+                    <DropShadow color="#00000066"/>
+                </effect>
+            </Button>
+            <Label fx:id="statusLabel" textFill="green" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-background-color: rgba(255,255,255,0.7); -fx-background-radius: 8; -fx-padding: 6 12;"/>
+        </VBox>
+    </children>
+</AnchorPane>
+

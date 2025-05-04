@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.ImageView?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReceiptController"
+      spacing="30" style="-fx-background-color: #f5f5f5;" alignment="CENTER">
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
+    <VBox spacing="25" style="-fx-background-color: white; -fx-padding: 40; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);">
+        <!-- En-tête du reçu -->
+        <VBox alignment="CENTER" spacing="15">
+            <Text text="RECU DE PAIEMENT" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-fill: #2c3e50; -fx-font-family: 'Arial';"/>
+            <Text text="Wings Solutions" style="-fx-font-size: 18px; -fx-fill: #7f8c8d; -fx-font-family: 'Arial';"/>
+            <Line endX="300" style="-fx-stroke: #bdc3c7;"/>
+        </VBox>
+
+        <!-- Détails de l'événement -->
+        <VBox spacing="20">
+            <Label text="Détails de l'événement" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-font-family: 'Arial'; -fx-padding: 0 0 10 0;"/>
+
+            <GridPane hgap="20" vgap="15">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="150" prefWidth="150"/>
+                    <ColumnConstraints minWidth="200" prefWidth="200"/>
+                </columnConstraints>
+
+                <Label text="Événement:" style="-fx-font-weight: bold; -fx-text-fill: #34495e; -fx-font-size: 14px; -fx-font-family: 'Arial';"/>
+                <Label fx:id="eventNameLabel" style="-fx-text-fill: #2c3e50; -fx-font-size: 14px; -fx-font-family: 'Arial';" GridPane.columnIndex="1" wrapText="true"/>
+
+                <Label text="Type:" style="-fx-font-weight: bold; -fx-text-fill: #34495e; -fx-font-size: 14px; -fx-font-family: 'Arial';" GridPane.rowIndex="1"/>
+                <Label fx:id="eventTypeLabel" style="-fx-text-fill: #2c3e50; -fx-font-size: 14px; -fx-font-family: 'Arial';" GridPane.columnIndex="1" GridPane.rowIndex="1" wrapText="true"/>
+
+                <Label text="Lieu:" style="-fx-font-weight: bold; -fx-text-fill: #34495e; -fx-font-size: 14px; -fx-font-family: 'Arial';" GridPane.rowIndex="2"/>
+                <Label fx:id="eventLocationLabel" style="-fx-text-fill: #2c3e50; -fx-font-size: 14px; -fx-font-family: 'Arial';" GridPane.columnIndex="1" GridPane.rowIndex="2" wrapText="true"/>
+
+                <Label text="Date:" style="-fx-font-weight: bold; -fx-text-fill: #34495e; -fx-font-size: 14px; -fx-font-family: 'Arial';" GridPane.rowIndex="3"/>
+                <Label fx:id="eventDateLabel" style="-fx-text-fill: #2c3e50; -fx-font-size: 14px; -fx-font-family: 'Arial';" GridPane.columnIndex="1" GridPane.rowIndex="3" wrapText="true"/>
+            </GridPane>
+        </VBox>
+
+        <Separator style="-fx-background-color: #bdc3c7; -fx-padding: 10 0;"/>
+
+        <!-- Détails de la réservation -->
+        <VBox spacing="20">
+            <Label text="Détails de la réservation" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-font-family: 'Arial'; -fx-padding: 0 0 10 0;"/>
+
+            <GridPane hgap="20" vgap="15">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="150" prefWidth="150"/>
+                    <ColumnConstraints minWidth="200" prefWidth="200"/>
+                </columnConstraints>
+
+                <Label text="Nombre de places:" style="-fx-font-weight: bold; -fx-text-fill: #34495e; -fx-font-size: 14px; -fx-font-family: 'Arial';"/>
+                <Label fx:id="nbPlacesLabel" style="-fx-text-fill: #2c3e50; -fx-font-size: 14px; -fx-font-family: 'Arial';" GridPane.columnIndex="1" wrapText="true"/>
+
+                <Label text="Email:" style="-fx-font-weight: bold; -fx-text-fill: #34495e; -fx-font-size: 14px; -fx-font-family: 'Arial';" GridPane.rowIndex="1"/>
+                <Label fx:id="emailLabel" style="-fx-text-fill: #2c3e50; -fx-font-size: 14px; -fx-font-family: 'Arial';" GridPane.columnIndex="1" GridPane.rowIndex="1" wrapText="true"/>
+
+                <Label text="Date de réservation:" style="-fx-font-weight: bold; -fx-text-fill: #34495e; -fx-font-size: 14px; -fx-font-family: 'Arial';" GridPane.rowIndex="2"/>
+                <Label fx:id="reservationDateLabel" style="-fx-text-fill: #2c3e50; -fx-font-size: 14px; -fx-font-family: 'Arial';" GridPane.columnIndex="1" GridPane.rowIndex="2" wrapText="true"/>
+            </GridPane>
+        </VBox>
+
+        <Separator style="-fx-background-color: #bdc3c7; -fx-padding: 10 0;"/>
+
+        <!-- QR Code -->
+        <VBox alignment="CENTER" spacing="10">
+            <Label text="QR Code de l'événement" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-font-family: 'Arial';"/>
+            <ImageView fx:id="qrCodeImageView" fitWidth="150" fitHeight="150" preserveRatio="true"/>
+        </VBox>
+
+        <Separator style="-fx-background-color: #bdc3c7; -fx-padding: 10 0;"/>
+
+        <!-- Message de confirmation -->
+        <VBox alignment="CENTER" spacing="15">
+            <Text text="✓" style="-fx-font-size: 48px; -fx-fill: #27ae60; -fx-font-family: 'Arial';"/>
+            <Text text="Réservation confirmée" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-fill: #27ae60; -fx-font-family: 'Arial';"/>
+            <Text text="Merci de votre confiance!" style="-fx-font-size: 16px; -fx-fill: #7f8c8d; -fx-font-family: 'Arial';"/>
+        </VBox>
+    </VBox>
+
+    <!-- Bouton de retour -->
+    <Button fx:id="backButton" text="Retour à la liste des événements"
+            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 5; -fx-font-size: 14px; -fx-font-family: 'Arial';"/>
+</VBox> 

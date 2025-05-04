@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.MesReclamationsController"
+            prefHeight="800.0" prefWidth="1200.0"
+            style="-fx-background-color: white;">
+    <children>
+        <!-- Background Image -->
+        <StackPane AnchorPane.topAnchor="80" AnchorPane.bottomAnchor="60" 
+                   AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <ImageView fitHeight="660" fitWidth="1200" preserveRatio="false">
+                <Image url="@/assets/images/slider-bg.png"/>
+                <effect>
+                    <GaussianBlur radius="5"/>
+                </effect>
+            </ImageView>
+        </StackPane>
+
+        <!-- Header Section -->
+        <VBox spacing="0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <!-- Top Header -->
+            <fx:include source="UserBar.fxml" />
+        </VBox>
+
+        <!-- Main Content: ListView of Reclamations -->
+        <VBox alignment="TOP_CENTER" spacing="30" layoutX="200.0" layoutY="120.0" prefWidth="800" prefHeight="600" AnchorPane.topAnchor="100" AnchorPane.leftAnchor="200" AnchorPane.rightAnchor="200" AnchorPane.bottomAnchor="60">
+            <Text text="Mes Réclamations" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-fill: #314060;" />
+            <ListView fx:id="mesReclamationsListView" prefHeight="500" prefWidth="700"
+                      style="-fx-background-color: #f8fafc; -fx-background-radius: 8px; -fx-padding: 10px;" />
+        </VBox>
+    </children>
+</AnchorPane>

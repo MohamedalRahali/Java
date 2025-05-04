@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.EditReclamationController"
+            prefHeight="400.0" prefWidth="500.0"
+            style="-fx-background-color: white;">
+    <children>
+        <VBox alignment="CENTER" spacing="20" AnchorPane.topAnchor="40" AnchorPane.leftAnchor="40" AnchorPane.rightAnchor="40" AnchorPane.bottomAnchor="40">
+            <Label text="Modifier la Réclamation" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+            <TextField fx:id="titleField" promptText="Titre" maxWidth="350" />
+            <TextArea fx:id="descriptionArea" promptText="Description" maxWidth="350" prefRowCount="4" />
+            <ComboBox fx:id="typeComboBox" maxWidth="350" />
+            <HBox spacing="20" alignment="CENTER">
+                <Button text="Annuler" onAction="#handleCancel" style="-fx-background-color: #cccccc; -fx-text-fill: #314060; -fx-background-radius: 8;" />
+                <Button text="Enregistrer" onAction="#handleSave" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-background-radius: 8;" />
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>

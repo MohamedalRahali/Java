@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx/17.0.2" fx:controller="gui.ArtistProfileController" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: white;">
+    <children>
+        <!-- Background Image -->
+        <StackPane AnchorPane.topAnchor="80" AnchorPane.bottomAnchor="60" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <ImageView fitHeight="660" fitWidth="1200" preserveRatio="false">
+                <Image url="@/assets/images/slider-bg.png"/>
+                <effect>
+                    <GaussianBlur radius="5"/>
+                </effect>
+            </ImageView>
+        </StackPane>
+
+        <!-- Artist Bar Header Section -->
+        <fx:include source="/fxml/ArtistBar.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+
+        <!-- Main Section -->
+        <VBox spacing="15.0" alignment="CENTER" layoutX="300.0" layoutY="200.0" prefWidth="600" prefHeight="400">
+            <Label text="Artist Profile" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+            <TextField fx:id="firstNameField" promptText="First Name" />
+            <TextField fx:id="lastNameField" promptText="Last Name" />
+            <TextField fx:id="emailField" promptText="Email" />
+            <PasswordField fx:id="passwordField" promptText="Password" />
+            <DatePicker fx:id="dobPicker" promptText="Date of Birth" />
+            <Button fx:id="saveButton" text="Save" />
+            <Label fx:id="statusLabel" textFill="green" />
+        </VBox>
+
+        <!-- Footer -->
+        <HBox AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+              style="-fx-background-color: white; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, -2);" alignment="CENTER">
+            <Label text=" 2025 Wings Solutions Events Team " style="-fx-text-fill: #666;">
+                <font>
+                    <Font size="12"/>
+                </font>
+            </Label>
+        </HBox>
+    </children>
+</AnchorPane>

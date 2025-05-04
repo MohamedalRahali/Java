@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.chart.PieChart?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.AdminHomeController"
+            prefHeight="700.0" prefWidth="1200.0" minHeight="400.0" minWidth="700.0" maxHeight="-1.0" maxWidth="-1.0"
+            style="-fx-background-color: #f8fafc;"
+            stylesheets="@backborad.css">
+    <children>
+        <!-- Top Bar -->
+        <fx:include fx:id="adminBar" source="AdminBar.fxml" />
+
+        <!-- Sidebar under Top Bar -->
+        <VBox spacing="0" prefWidth="200" style="-fx-background-color: #00b4d8; -fx-background-radius: 0 24 24 0; -fx-padding: 36 0 0 0; -fx-min-width: 200; -fx-max-width: 200; -fx-pref-width: 200;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0" AnchorPane.bottomAnchor="0.0">
+            <VBox alignment="CENTER" spacing="16" style="-fx-padding: 0 0 20 0;">
+                <Label text="Navigator Bar" styleClass="sidebar-title" style="-fx-font-size: 30px; -fx-font-family: 'Serif'; -fx-font-weight: bold; -fx-text-fill: #fff; -fx-padding: 16 0 24 0;" alignment="CENTER" />
+            </VBox>
+            <Separator style="-fx-background-color: #314060;"/>
+            <VBox spacing="8" style="-fx-padding: 20 0 0 0;">
+                <Button text="User Dashboard" styleClass="sidebar-link" onAction="#goToAdminHome" />
+                <Button text="Add User" styleClass="sidebar-link" onAction="#goToCreateUser" />
+                <Button text="User Table" styleClass="sidebar-link" onAction="#goToUserView" />
+                <Button text="Logout" styleClass="sidebar-link" onAction="#logout" />
+            </VBox>
+        </VBox>
+
+        <!-- Main Content Area under Top Bar and Sidebar -->
+        <VBox spacing="20" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" AnchorPane.bottomAnchor="0.0" style="-fx-padding: 30 40 30 40;">
+            <!-- Top Bar -->
+            <HBox alignment="CENTER_RIGHT" spacing="12" style="-fx-padding: 0 0 20 0;">
+                <Label text=" Admin Dashboard" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #314060;"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <!-- Dashboard Cards -->
+            <HBox spacing="24" alignment="CENTER_LEFT">
+                <VBox style="-fx-background-color: #fff; -fx-background-radius: 12; -fx-padding: 18; -fx-effect: dropshadow(gaussian, #31406022, 8, 0, 0, 0);" alignment="CENTER" spacing="6" prefWidth="190">
+                    <Label text="Total Users" style="-fx-font-size: 15px; -fx-text-fill: #314060;"/>
+                    <Label fx:id="totalUsersLabel" text="0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #233554;"/>
+                </VBox>
+                <VBox style="-fx-background-color: #fff; -fx-background-radius: 12; -fx-padding: 18; -fx-effect: dropshadow(gaussian, #31406022, 8, 0, 0, 0);" alignment="CENTER" spacing="6" prefWidth="190">
+                    <Label text="Admins" style="-fx-font-size: 15px; -fx-text-fill: #314060;"/>
+                    <Label fx:id="adminCountLabel" text="0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #233554;"/>
+                </VBox>
+                <VBox style="-fx-background-color: #fff; -fx-background-radius: 12; -fx-padding: 18; -fx-effect: dropshadow(gaussian, #31406022, 8, 0, 0, 0);" alignment="CENTER" spacing="6" prefWidth="190">
+                    <Label text="Artists" style="-fx-font-size: 15px; -fx-text-fill: #314060;"/>
+                    <Label fx:id="artistCountLabel" text="0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #233554;"/>
+                </VBox>
+                <VBox style="-fx-background-color: #fff; -fx-background-radius: 12; -fx-padding: 18; -fx-effect: dropshadow(gaussian, #31406022, 8, 0, 0, 0);" alignment="CENTER" spacing="6" prefWidth="190">
+                    <Label text="Users" style="-fx-font-size: 15px; -fx-text-fill: #314060;"/>
+                    <Label fx:id="userCountLabel" text="0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #233554;"/>
+                </VBox>
+                <VBox style="-fx-background-color: #fff; -fx-background-radius: 12; -fx-padding: 18; -fx-effect: dropshadow(gaussian, #31406022, 8, 0, 0, 0);" alignment="CENTER" spacing="6" prefWidth="190">
+                    <Label text="Blocked Users" style="-fx-font-size: 15px; -fx-text-fill: #314060;"/>
+                    <Label fx:id="blockedCountLabel" text="0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;"/>
+                </VBox>
+            </HBox>
+
+            <!-- Pie chart for blocked user percentage by type -->
+            <HBox spacing="24" alignment="CENTER_LEFT" style="-fx-padding: 32 0 0 0;">
+                <VBox alignment="CENTER" spacing="12" style="-fx-background-color: #fff; -fx-background-radius: 12; -fx-padding: 18;">
+                    <Label text="Blocked User % by Type" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #314060;"/>
+                    <PieChart fx:id="blockedPieChart" prefWidth="440" prefHeight="300" style="-fx-background-color: #fff; -fx-border-color: #00b4d8; -fx-border-width: 2;"/>
+                </VBox>
+            </HBox>
+
+            <!-- Action Buttons -->
+            <HBox spacing="24" alignment="CENTER_LEFT" style="-fx-padding: 20 0 0 0;">
+                <Button text=" View Users" onAction="#manageUsers"
+                        prefHeight="60.0" minWidth="250.0"
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 10; -fx-font-weight: bold;"/>
+                <Button text=" Create User" onAction="#createUser"
+                        prefHeight="60.0" minWidth="250.0"
+                        style="-fx-background-color: #43bfae; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 10; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <!-- Footer -->
+            <Label alignment="CENTER" text=" 2025 Wings Solutions" styleClass="wings-title-footer"/>
+        </VBox>
+    </children>
+</AnchorPane>

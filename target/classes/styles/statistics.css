@@ -1,0 +1,217 @@
+/* Statistics Dashboard Styles */
+
+/* Stat Cards */
+.stat-card {
+    background-color: white;
+    padding: 20px;
+    min-width: 200px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.stat-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #5c6b7f;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1a237e;
+    padding: 10px 0;
+}
+
+.stat-subtitle {
+    font-size: 14px;
+    color: #8c9bb5;
+}
+
+/* Chart Cards */
+.chart-card {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.chart-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #314060;
+    padding: 0 0 10px 0;
+}
+
+/* List Cards */
+.list-card {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.list-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #314060;
+    padding: 0 0 10px 0;
+}
+
+/* Charts Styling */
+.chart {
+    padding: 10px;
+}
+
+.chart-plot-background {
+    background-color: transparent;
+}
+
+.chart-vertical-grid-lines {
+    stroke: #edf2f7;
+}
+
+.chart-horizontal-grid-lines {
+    stroke: #edf2f7;
+}
+
+.default-color0.chart-pie { 
+    fill: #1a237e; 
+}
+
+.default-color1.chart-pie { 
+    fill: #0d47a1; 
+}
+
+.default-color2.chart-pie { 
+    fill: #1565c0; 
+}
+
+.default-color3.chart-pie { 
+    fill: #1976d2; 
+}
+
+.default-color4.chart-pie { 
+    fill: #1e88e5; 
+}
+
+.default-color0.chart-bar { 
+    fill: #1a237e; 
+}
+
+.default-color1.chart-bar { 
+    fill: #0d47a1; 
+}
+
+.default-color2.chart-bar { 
+    fill: #1565c0; 
+}
+
+/* List View Styling */
+.list-view {
+    background-color: transparent;
+    padding: 0;
+}
+
+.list-cell {
+    background-color: transparent;
+    padding: 8px 0;
+    color: #314060;
+}
+
+.list-cell:filled:selected {
+    background-color: #e3f2fd;
+}
+
+/* Sidebar Links */
+.sidebar-link {
+    background-color: transparent;
+    color: white;
+    font-size: 14px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.sidebar-link:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Top Bar Links */
+.topbar-link {
+    background-color: transparent;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.topbar-link:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Scroll Bar */
+.scroll-pane {
+    background-color: transparent;
+}
+
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    background-color: transparent;
+}
+
+.scroll-bar:vertical .thumb,
+.scroll-bar:horizontal .thumb {
+    background-color: #c1c9d7;
+    border-radius: 5em;
+}
+
+.scroll-bar:vertical .track,
+.scroll-bar:horizontal .track {
+    background-color: transparent;
+}
+
+.scroll-pane > .corner {
+    background-color: transparent;
+}
+
+.custom-list-view {
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    border-color: #e1701a;
+    border-width: 1px;
+}
+
+.custom-list-view .list-cell {
+    background-color: transparent;
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+.custom-list-view .list-cell:filled:hover {
+    background-color: rgba(225, 112, 26, 0.3);
+}
+
+.custom-list-view .list-cell:filled:selected {
+    background-color: #e1701a;
+}
+
+.custom-list-view .scroll-bar:vertical {
+    background-color: transparent;
+}
+
+.custom-list-view .scroll-bar:vertical .thumb {
+    background-color: #e1701a;
+    border-radius: 5px;
+}
+
+.custom-list-view .scroll-bar:vertical .track {
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 5px;
+}
+
+.custom-list-view .scroll-bar:vertical .increment-button,
+.custom-list-view .scroll-bar:vertical .decrement-button {
+    background-color: transparent;
+    padding: 0 5px;
+}
+
+.custom-list-view .scroll-bar:vertical .increment-arrow,
+.custom-list-view .scroll-bar:vertical .decrement-arrow {
+    background-color: #e1701a;
+}

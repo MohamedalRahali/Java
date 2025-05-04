@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.animation.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.CreateReclamationController"
+            prefHeight="800.0" prefWidth="1200.0"
+            style="-fx-background-color: white;">
+    <children>
+        <!-- Background Image -->
+        <StackPane AnchorPane.topAnchor="80" AnchorPane.bottomAnchor="60" 
+                   AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <ImageView fitHeight="660" fitWidth="1200" preserveRatio="false">
+                <Image url="@/images/slider-bg.png"/>
+                <effect>
+                    <GaussianBlur radius="5"/>
+                </effect>
+            </ImageView>
+        </StackPane>
+
+        <!-- Header Section -->
+        <VBox spacing="0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <!-- Top Header -->
+            <fx:include source="UserBar.fxml" />
+        </VBox>
+
+        <!-- Main Section (Reclamation Form) -->
+        <VBox alignment="CENTER" spacing="30" layoutX="300.0" layoutY="120.0" prefWidth="600" prefHeight="500">
+            <Text text="Créer une Réclamation" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-fill: white;">
+                <effect>
+                    <DropShadow radius="10" spread="0.5"/>
+                </effect>
+            </Text>
+            <GridPane hgap="15" vgap="15" alignment="CENTER">
+                <Label text="Titre:" style="-fx-text-fill: #f9c89b; -fx-font-size: 16px; -fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="titleField" promptText="Titre de la réclamation" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-size: 16px; -fx-background-radius: 8px; -fx-padding: 5px 10px;" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Label text="Type:" style="-fx-text-fill: #f9c89b; -fx-font-size: 16px; -fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <ComboBox fx:id="typeComboBox" promptText="Sélectionnez un type" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-size: 16px; -fx-background-radius: 8px; -fx-padding: 5px 10px;" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label text="Description:" style="-fx-text-fill: #f9c89b; -fx-font-size: 16px; -fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <HBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <TextArea fx:id="descriptionArea" promptText="Description de la réclamation" wrapText="true" prefRowCount="5" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-font-size: 16px; -fx-background-radius: 8px; -fx-padding: 5px 10px;"/>
+                    <Button fx:id="micButton" text="🎤" onAction="#handleVoiceToText" style="-fx-font-size: 18px; -fx-background-color: #e1701a; -fx-background-radius: 50%; -fx-text-fill: #fff3e0;"/>
+                </HBox>
+            </GridPane>
+            <HBox spacing="15" alignment="CENTER">
+                <Button text="💾 Créer" onAction="#createReclamation" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #e1701a; -fx-text-fill: #fff3e0; -fx-font-size: 16px; -fx-background-radius: 12px; -fx-font-weight: bold; -fx-cursor: hand;" styleClass="animated-button,create-button">
+                    <effect>
+                        <DropShadow color="#00000080" radius="8.0" spread="0.15"/>
+                    </effect>
+                </Button>
+                <Button text="↩️ Annuler" onAction="#goBackToHome" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #a0522d; -fx-text-fill: #ffe0bd; -fx-font-size: 16px; -fx-background-radius: 12px; -fx-font-weight: bold; -fx-cursor: hand;" styleClass="animated-button,view-button">
+                    <effect>
+                        <DropShadow color="#00000080" radius="8.0" spread="0.15"/>
+                    </effect>
+                </Button>
+            </HBox>
+        </VBox>
+
+        <!-- Footer -->
+        <HBox AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" style="-fx-background-color: white; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, -2);" alignment="CENTER">
+            <Label text="📝 Créer une Réclamation" style="-fx-text-fill: #666;">
+                <font>
+                    <Font size="12"/>
+                </font>
+            </Label>
+        </HBox>
+    </children>
+    <!-- Animations -->
+    <fx:define>
+        <FadeTransition fx:id="fadeIn1" node="${userEmailLabel.parent}" duration="1000ms" fromValue="0" toValue="1"/>
+        <FadeTransition fx:id="fadeIn2" node="${userEmailLabel.parent}" duration="1000ms" fromValue="0" toValue="1"/>
+    </fx:define>
+</AnchorPane>

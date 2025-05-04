@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.collections.FXCollections?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.CreateUserController"
+            prefHeight="700.0" prefWidth="1200.0" minHeight="400.0" minWidth="700.0" maxHeight="-1.0" maxWidth="-1.0"
+            style="-fx-background-color: #f8fafc;"
+            stylesheets="@backborad.css">
+    <children>
+        <!-- Top Bar -->
+        <fx:include fx:id="adminBar" source="AdminBar.fxml"/>
+        <!-- Sidebar under Top Bar -->
+        <VBox spacing="0" prefWidth="200" style="-fx-background-color: #00b4d8; -fx-background-radius: 0 24 24 0; -fx-padding: 36 0 0 0; -fx-min-width: 200; -fx-max-width: 200; -fx-pref-width: 200;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0" AnchorPane.bottomAnchor="0.0">
+            <VBox alignment="CENTER" spacing="16" style="-fx-padding: 0 0 20 0;">
+                <Label text="Navigator Bar" styleClass="sidebar-title" style="-fx-font-size: 30px; -fx-font-family: 'Serif'; -fx-font-weight: bold; -fx-text-fill: #fff; -fx-padding: 16 0 24 0;" alignment="CENTER" />
+            </VBox>
+            <Separator style="-fx-background-color: #314060;"/>
+            <VBox spacing="8" style="-fx-padding: 20 0 0 0;">
+                <Button text="User Dashboard" styleClass="sidebar-link" onAction="#goToAdminHome" />
+                <Button text="Add User" styleClass="sidebar-link" onAction="#goToCreateUser" />
+                <Button text="User Table" styleClass="sidebar-link" onAction="#goToUserView" />
+                <Button text="Logout" styleClass="sidebar-link" onAction="#logout" />
+            </VBox>
+        </VBox>
+        <!-- Main Content Area under Top Bar and Sidebar -->
+        <VBox spacing="20" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" AnchorPane.bottomAnchor="0.0" style="-fx-padding: 30 40 30 40;">
+            <VBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #fff; -fx-background-radius: 12; -fx-padding: 32 40 32 40; -fx-effect: dropshadow(gaussian, #31406022, 8, 0, 0, 0); -fx-border-color: #00b4d8; -fx-border-width: 2; -fx-border-radius: 12;">
+                <Label text="👤 Create New User" 
+                       style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #314060; -fx-padding: 0 0 24 0;" />
+                <GridPane hgap="18" vgap="16" alignment="CENTER_LEFT" style="-fx-padding: 0 0 24 0;">
+                    <columnConstraints>
+                        <ColumnConstraints prefWidth="220" />
+                    </columnConstraints>
+                    <TextField fx:id="nameField" promptText="Name" GridPane.rowIndex="0"
+                               style="-fx-background-radius: 10; -fx-padding: 10; -fx-background-color: #fff; -fx-text-fill: #314060; -fx-border-color: #00b4d8; -fx-border-width: 1; -fx-font-size: 15px; -fx-prompt-text-fill: #b0b8c9;" />
+                    <TextField fx:id="lastnameField" promptText="Lastname" GridPane.rowIndex="1"
+                               style="-fx-background-radius: 10; -fx-padding: 10; -fx-background-color: #fff; -fx-text-fill: #314060; -fx-border-color: #00b4d8; -fx-border-width: 1; -fx-font-size: 15px; -fx-prompt-text-fill: #b0b8c9;" />
+                    <TextField fx:id="emailField" promptText="Email" GridPane.rowIndex="2"
+                               style="-fx-background-radius: 10; -fx-padding: 10; -fx-background-color: #fff; -fx-text-fill: #314060; -fx-border-color: #00b4d8; -fx-border-width: 1; -fx-font-size: 15px; -fx-prompt-text-fill: #b0b8c9;" />
+                    <PasswordField fx:id="passwordField" promptText="Password" GridPane.rowIndex="3"
+                                   style="-fx-background-radius: 10; -fx-padding: 10; -fx-background-color: #fff; -fx-text-fill: #314060; -fx-border-color: #00b4d8; -fx-border-width: 1; -fx-font-size: 15px; -fx-prompt-text-fill: #b0b8c9;" />
+                    <ComboBox fx:id="roleComboBox" promptText="Select Role" GridPane.rowIndex="4"
+                              style="-fx-background-radius: 10; -fx-padding: 10; -fx-background-color: #fff; -fx-text-fill: #314060; -fx-border-color: #00b4d8; -fx-border-width: 1; -fx-font-size: 15px; -fx-prompt-text-fill: #b0b8c9;" />
+                    <DatePicker fx:id="dateOfBirthPicker" GridPane.rowIndex="5"
+                               style="-fx-background-radius: 10; -fx-padding: 10; -fx-background-color: #fff; -fx-text-fill: #314060; -fx-border-color: #00b4d8; -fx-border-width: 1; -fx-font-size: 15px;" />
+                </GridPane>
+                <HBox spacing="24" alignment="CENTER_LEFT">
+                    <Button text="✅ Create User" onAction="#createUser"
+                            style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 10; -fx-font-weight: bold; -fx-padding: 10 32;" />
+                    <Button text="🔙 Back to Home" onAction="#goBackToHome"
+                            style="-fx-background-color: #43bfae; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 10; -fx-font-weight: bold; -fx-padding: 10 32;" />
+                </HBox>
+            </VBox>
+        </VBox>
+    </children>
+</AnchorPane>
