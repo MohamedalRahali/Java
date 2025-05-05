@@ -11,6 +11,11 @@ import javafx.scene.Node;
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * Controller for managing reclamations (complaints).
+ * This class handles the navigation between different reclamation-related views
+ * and provides functionality for creating, modifying, and deleting reclamations.
+ */
 public class ReclamationManagementController {
 
     @FXML
