@@ -38,6 +38,11 @@ public class ArtistBarController {
         loadScene("/fxml/artist_profile.fxml", event.getSource());
     }
 
+    @FXML
+    private void goToArtistBlogs(ActionEvent event) throws IOException {
+        loadScene("/fxml/ArtistAfficherBlogs.fxml", event.getSource());
+    }
+
     // Overloaded for MenuItem support
     @FXML
     private void goToArtistHome() throws IOException {
@@ -59,6 +64,11 @@ public class ArtistBarController {
     @FXML
     private void goToArtistProfile() throws IOException {
         loadScene("/fxml/artist_profile.fxml", null);
+    }
+
+    @FXML
+    private void goToArtistBlogs() throws IOException {
+        loadScene("/fxml/ArtistAfficherBlogs.fxml", null);
     }
 
     private void loadScene(String fxmlPath, Object eventSource) throws IOException {

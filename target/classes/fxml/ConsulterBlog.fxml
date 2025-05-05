@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import org.kordamp.ikonli.javafx.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.ConsulterBlogController"
+            stylesheets="@../styles/styles.css">
+
+    <fx:include fx:id="adminBar" source="AdminBar.fxml" />
+    <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background-color:transparent;" AnchorPane.topAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+        <content>
+            <HBox spacing="0" alignment="CENTER">
+                <!-- Sidebar Navigation -->
+                <VBox prefHeight="600.0" prefWidth="220.0" style="-fx-background-color: #00b4d8; -fx-background-radius: 0 24 24 0; -fx-padding: 36 0 0 0;">
+                    <Pane prefHeight="100.0" prefWidth="200.0" style="-fx-alignment: center;">
+                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="70.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../Projet/Images/logo.png"/>
+                            </image>
+                        </ImageView>
+                    </Pane>
+                    <Button text="Retour" onAction="#handleRetour" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 16px; -fx-font-weight: bold;">
+                        <graphic>
+                            <FontIcon iconLiteral="fas-arrow-left" iconSize="18"/>
+                        </graphic>
+                    </Button>
+                </VBox>
+                <!-- Main Content Area -->
+                <VBox maxWidth="900" spacing="24" alignment="TOP_CENTER" style="-fx-background-color: #fff; -fx-background-radius: 18; -fx-padding: 32 40 32 40; -fx-effect: dropshadow(gaussian, #31406022, 10, 0, 0, 0);">
+                    <HBox spacing="16" alignment="CENTER_LEFT">
+                        <FontIcon iconLiteral="fas-blog" iconSize="28" styleClass="header-icon"/>
+                        <Label fx:id="titreLabel" style="-fx-font-size: 28px; -fx-font-family: 'Segoe UI', 'Arial'; -fx-font-weight: bold; -fx-text-fill: #314060;"/>
+                    </HBox>
+                    <Label fx:id="dateLabel" style="-fx-text-fill: #666; -fx-font-size: 15px;"/>
+                    <Label fx:id="typeLabel" style="-fx-text-fill: #3498db; -fx-font-size: 15px;"/>
+                    <TextArea fx:id="descriptionArea" editable="false" wrapText="true" style="-fx-background-color: #f8fafc; -fx-background-radius: 10; -fx-padding: 16;"/>
+                    <!-- Section des réactions -->
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Button fx:id="likeButton" styleClass="reaction-button" onAction="#handleReaction" userData="LIKE">
+                            <graphic>
+                                <HBox spacing="5" alignment="CENTER">
+                                    <FontIcon iconLiteral="fas-thumbs-up" iconSize="16"/>
+                                    <Label text="J'aime" style="-fx-text-fill: white;"/>
+                                </HBox>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="loveButton" styleClass="reaction-button-love" onAction="#handleReaction" userData="LOVE">
+                            <graphic>
+                                <HBox spacing="5" alignment="CENTER">
+                                    <FontIcon iconLiteral="fas-heart" iconSize="16"/>
+                                    <Label text="J'adore" style="-fx-text-fill: white;"/>
+                                </HBox>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="sadButton" styleClass="reaction-button-sad" onAction="#handleReaction" userData="SAD">
+                            <graphic>
+                                <HBox spacing="5" alignment="CENTER">
+                                    <FontIcon iconLiteral="fas-sad-tear" iconSize="16"/>
+                                    <Label text="Triste" style="-fx-text-fill: black;"/>
+                                </HBox>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="laughButton" styleClass="reaction-button-laugh" onAction="#handleReaction" userData="LAUGH">
+                            <graphic>
+                                <HBox spacing="5" alignment="CENTER">
+                                    <FontIcon iconLiteral="fas-laugh-beam" iconSize="16"/>
+                                    <Label text="Rire" style="-fx-text-fill: black;"/>
+                                </HBox>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="angryButton" styleClass="reaction-button-angry" onAction="#handleReaction" userData="ANGRY">
+                            <graphic>
+                                <HBox spacing="5" alignment="CENTER">
+                                    <FontIcon iconLiteral="fas-angry" iconSize="16"/>
+                                    <Label text="Fâché" style="-fx-text-fill: white;"/>
+                                </HBox>
+                            </graphic>
+                        </Button>
+                    </HBox>
+                    <!-- Affichage du nombre de réactions -->
+                    <HBox fx:id="reactionsCountContainer" spacing="15" style="-fx-padding: 10 0;">
+                        <Label fx:id="likesCount" styleClass="reaction-count-like"/>
+                        <Label fx:id="lovesCount" styleClass="reaction-count-love"/>
+                        <Label fx:id="sadsCount" styleClass="reaction-count-sad"/>
+                        <Label fx:id="laughsCount" styleClass="reaction-count-laugh"/>
+                        <Label fx:id="angrysCount" styleClass="reaction-count-angry"/>
+                    </HBox>
+                    <!-- Bouton de partage Facebook -->
+                    <Button onAction="#handleShareFacebook" styleClass="facebook-share-button">
+                        <graphic>
+                            <HBox spacing="5" alignment="CENTER">
+                                <FontIcon iconLiteral="fab-facebook" iconSize="16"/>
+                                <Label text="Partager sur Facebook" style="-fx-text-fill: white;"/>
+                            </HBox>
+                        </graphic>
+                    </Button>
+                    <!-- Comments Section -->
+                    <VBox spacing="10" style="-fx-background-color: #f8fafc; -fx-background-radius: 10; -fx-padding: 18;">
+                        <Label text="Commentaires" style="-fx-font-size: 18px; -fx-font-weight: bold;">
+                            <graphic>
+                                <FontIcon iconLiteral="fas-comments" iconSize="18"/>
+                            </graphic>
+                        </Label>
+                        <VBox fx:id="commentsContainer" spacing="10"/>
+                        <VBox spacing="5">
+                            <Label text="Ajouter un commentaire">
+                                <graphic>
+                                    <FontIcon iconLiteral="fas-plus-circle" iconSize="14"/>
+                                </graphic>
+                            </Label>
+                            <TextArea fx:id="commentTextArea" promptText="Écrivez votre commentaire ici..." prefRowCount="3" wrapText="true" style="-fx-background-color: #fff; -fx-background-radius: 8;"/>
+                            <Button text="Publier" onAction="#handleAddComment" style="-fx-background-color: #00b4d8; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; min-width: 120;"/>
+                        </VBox>
+                    </VBox>
+                </VBox>
+            </HBox>
+        </content>
+    </ScrollPane>
+
+</AnchorPane> 

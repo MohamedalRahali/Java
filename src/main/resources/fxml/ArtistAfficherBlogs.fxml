@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" 
+            xmlns="http://javafx.com/javafx/17" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="controllers.ArtistAfficherBlogsController"
+            stylesheets="@../styles/styles.css">
+    <children>
+        <fx:include fx:id="artistBar" source="ArtistBar.fxml" />
+        <VBox alignment="CENTER" spacing="30" AnchorPane.topAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <VBox maxWidth="900" spacing="24" alignment="TOP_CENTER"
+                  style="-fx-background-color: #fff; -fx-background-radius: 18; -fx-padding: 32 40 32 40; -fx-effect: dropshadow(gaussian, #31406022, 10, 0, 0, 0);">
+                <HBox spacing="18" alignment="CENTER_LEFT">
+                    <FontIcon iconLiteral="fas-blog" iconSize="32"/>
+                    <Label text="Mes Blogs" style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+                </HBox>
+                <ListView fx:id="listView" minHeight="300" maxHeight="500"
+                          style="-fx-background-color: #f8fafc; -fx-background-radius: 10;"/>
+                <HBox spacing="18" alignment="CENTER_RIGHT">
+                    <Button onAction="#retourAjoutBlog" style="-fx-background-color: #00b4d8; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; min-width: 140;">
+                        <graphic>
+                            <HBox spacing="6" alignment="CENTER">
+                                <FontIcon iconLiteral="fas-plus-circle" iconSize="18"/>
+                                <Label text="Ajouter un blog" style="-fx-text-fill: white;"/>
+                            </HBox>
+                        </graphic>
+                    </Button>
+                    <Button onAction="#display" style="-fx-background-color: #f5cfa3; -fx-text-fill: #314060; -fx-font-weight: bold; -fx-background-radius: 8; min-width: 120;">
+                        <graphic>
+                            <HBox spacing="6" alignment="CENTER">
+                                <FontIcon iconLiteral="fas-sync-alt" iconSize="18"/>
+                                <Label text="Actualiser" style="-fx-text-fill: #314060;"/>
+                            </HBox>
+                        </graphic>
+                    </Button>
+                    <Button onAction="#goToTypes" style="-fx-background-color: #f5cfa3; -fx-text-fill: #314060; -fx-font-weight: bold; -fx-background-radius: 8; min-width: 100;">
+                        <graphic>
+                            <HBox spacing="6" alignment="CENTER">
+                                <FontIcon iconLiteral="fas-tags" iconSize="18"/>
+                                <Label text="Types" style="-fx-text-fill: #314060;"/>
+                            </HBox>
+                        </graphic>
+                    </Button>
+                </HBox>
+            </VBox>
+        </VBox>
+    </children>
+</AnchorPane>

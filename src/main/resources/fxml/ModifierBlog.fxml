@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefHeight="450.0" prefWidth="500.0" 
+            xmlns="http://javafx.com/javafx/17" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="controllers.ModifierBlog"
+            stylesheets="@../styles/styles.css"
+            styleClass="edit-form">
+
+    <VBox spacing="20" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" 
+          AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+        
+        <HBox spacing="10" alignment="CENTER_LEFT" styleClass="edit-header">
+            <FontIcon iconLiteral="fas-edit" iconSize="24" styleClass="header-icon"/>
+            <Label text="Modifier le Blog" styleClass="header-title"/>
+        </HBox>
+        
+        <VBox spacing="5" styleClass="form-group">
+            <Label text="Titre *" styleClass="form-label">
+                <graphic>
+                    <FontIcon iconLiteral="fas-heading" iconSize="14"/>
+                </graphic>
+            </Label>
+            <TextField fx:id="titreField" promptText="Entrez le titre" styleClass="form-field"/>
+        </VBox>
+
+        <VBox spacing="5" styleClass="form-group">
+            <Label text="Description *" styleClass="form-label">
+                <graphic>
+                    <FontIcon iconLiteral="fas-align-left" iconSize="14"/>
+                </graphic>
+            </Label>
+            <TextArea fx:id="descriptionField" 
+                     prefHeight="100.0" 
+                     promptText="Entrez la description"
+                     styleClass="form-field"/>
+        </VBox>
+
+        <VBox spacing="5" styleClass="form-group">
+            <Label text="Type *" styleClass="form-label">
+                <graphic>
+                    <FontIcon iconLiteral="fas-tag" iconSize="14"/>
+                </graphic>
+            </Label>
+            <ComboBox fx:id="typeComboBox" prefWidth="150" styleClass="form-field"/>
+        </VBox>
+
+        <VBox spacing="5" styleClass="form-group">
+            <Label text="Date de Publication" styleClass="form-label">
+                <graphic>
+                    <FontIcon iconLiteral="fas-calendar-alt" iconSize="14"/>
+                </graphic>
+            </Label>
+            <DatePicker fx:id="datePubPicker" styleClass="form-field"/>
+        </VBox>
+
+        <Label fx:id="dateCreationLabel" styleClass="info-label">
+            <graphic>
+                <FontIcon iconLiteral="fas-info-circle" iconSize="14"/>
+            </graphic>
+        </Label>
+
+        <Button onAction="#saveChanges" styleClass="save-button">
+            <graphic>
+                <HBox spacing="5" alignment="CENTER">
+                    <FontIcon iconLiteral="fas-save" iconSize="16"/>
+                    <Label text="Enregistrer" style="-fx-text-fill: white;"/>
+                </HBox>
+            </graphic>
+        </Button>
+    </VBox>
+
+</AnchorPane>

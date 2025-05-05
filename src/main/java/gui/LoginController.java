@@ -313,6 +313,7 @@ public class LoginController {
 
             // Store the current user information
             models.CurrentUser.setCurrentUser(user);
+            System.out.println("[DEBUG] CurrentUser after login: " + models.CurrentUser.getCurrentUserId());
 
             // Load the appropriate window based on user role
             Stage currentStage = (Stage) emailField.getScene().getWindow();

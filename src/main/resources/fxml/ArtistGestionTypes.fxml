@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.ArtistGestionTypesController"
+            stylesheets="@../styles/styles.css">
+    <children>
+        <fx:include fx:id="artistBar" source="ArtistBar.fxml" />
+        <VBox alignment="CENTER" spacing="20" AnchorPane.topAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Label text="Gestion des Types" style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+            <ListView fx:id="typeListView" minHeight="200" maxHeight="300"/>
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <TextField fx:id="typeField" promptText="Ajouter un type..."/>
+                <Button onAction="#handleAddType" text="Ajouter" style="-fx-background-color: #00b4d8; -fx-text-fill: white; -fx-background-radius: 8; min-width: 100;"/>
+                <Button onAction="#handleEditType" text="Modifier" style="-fx-background-color: #f5cfa3; -fx-text-fill: #314060; -fx-background-radius: 8; min-width: 100;"/>
+                <Button onAction="#handleDeleteType" text="Supprimer" style="-fx-background-color: #e53935; -fx-text-fill: white; -fx-background-radius: 8; min-width: 100;"/>
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>

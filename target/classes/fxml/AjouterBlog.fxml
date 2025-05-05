@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" 
+            xmlns="http://javafx.com/javafx/17" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="controllers.AjouterBlog" 
+            stylesheets="@../styles/styles.css">
+    <children>
+        <fx:include fx:id="adminBar" source="AdminBar.fxml" />
+        <VBox alignment="CENTER" spacing="30" AnchorPane.topAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <HBox spacing="0" alignment="CENTER">
+                <!-- Sidebar Navigation -->
+                <VBox prefHeight="500.0" prefWidth="220.0" style="-fx-background-color: #00b4d8; -fx-background-radius: 0 24 24 0; -fx-padding: 36 0 0 0;">
+                    <VBox alignment="CENTER" prefHeight="100.0" styleClass="logo-container">
+                        <FontIcon iconLiteral="fas-pen-fancy" iconSize="40" styleClass="logo-icon"/>
+                    </VBox>
+                    <Button styleClass="nav-button" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 16px; -fx-font-weight: bold;">
+                        <graphic>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <FontIcon iconLiteral="fas-blog" iconSize="18"/>
+                                <Label text="Blogs" style="-fx-text-fill: white;"/>
+                            </HBox>
+                        </graphic>
+                    </Button>
+                    <Button styleClass="nav-button" onAction="#goToCategories" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 16px; -fx-font-weight: bold;">
+                        <graphic>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <FontIcon iconLiteral="fas-tags" iconSize="18"/>
+                                <Label text="Types" style="-fx-text-fill: white;"/>
+                            </HBox>
+                        </graphic>
+                    </Button>
+                </VBox>
+                <!-- Main Content Area -->
+                <VBox maxWidth="900" spacing="24" alignment="TOP_CENTER" style="-fx-background-color: #fff; -fx-background-radius: 18; -fx-padding: 32 40 32 40; -fx-effect: dropshadow(gaussian, #31406022, 10, 0, 0, 0);">
+                    <HBox spacing="16" alignment="CENTER_LEFT">
+                        <FontIcon iconLiteral="fas-pen-fancy" iconSize="28" styleClass="header-icon"/>
+                        <Label text="Ajouter un Blog" style="-fx-font-size: 28px; -fx-font-family: 'Segoe UI', 'Arial'; -fx-font-weight: bold; -fx-text-fill: #314060;"/>
+                    </HBox>
+                    <!-- Form Section -->
+                    <VBox spacing="18">
+                        <!-- Titre -->
+                        <VBox spacing="5.0">
+                            <Label text="Titre du Blog *" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                            <TextField fx:id="titre" prefWidth="400.0" promptText="Minimum 3 caractères"/>
+                        </VBox>
+                        <!-- Description -->
+                        <VBox spacing="5.0">
+                            <Label text="Description *" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                            <TextArea fx:id="descr" prefHeight="100.0" prefWidth="400.0" promptText="Minimum 10 caractères"/>
+                        </VBox>
+                        <!-- Date de Publication -->
+                        <VBox spacing="5.0">
+                            <Label text="Date de Publication" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                            <DatePicker fx:id="datePub" prefWidth="400.0"/>
+                        </VBox>
+                        <!-- Type de Blog -->
+                        <VBox spacing="5.0">
+                            <Label text="Type de Blog" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                            <ComboBox fx:id="typeCombo" prefWidth="400.0"/>
+                        </VBox>
+                        <!-- Buttons -->
+                        <HBox spacing="16" alignment="CENTER_RIGHT">
+                            <Button onAction="#save" style="-fx-background-color: #00b4d8; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; min-width: 140;">
+                                <graphic>
+                                    <HBox spacing="5" alignment="CENTER">
+                                        <FontIcon iconLiteral="fas-save" iconSize="16"/>
+                                        <Label text="Enregistrer" style="-fx-text-fill: white;"/>
+                                    </HBox>
+                                </graphic>
+                            </Button>
+                            <Button onAction="#display" style="-fx-background-color: #f5cfa3; -fx-text-fill: #314060; -fx-font-weight: bold; -fx-background-radius: 8; min-width: 120;">
+                                <graphic>
+                                    <HBox spacing="5" alignment="CENTER">
+                                        <FontIcon iconLiteral="fas-list" iconSize="16"/>
+                                        <Label text="Afficher" style="-fx-text-fill: #314060;"/>
+                                    </HBox>
+                                </graphic>
+                            </Button>
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>
