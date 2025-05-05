@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.DropShadow?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gui.CreateReclamationController"
+      stylesheets="@create_reclamation.css"
+      style="-fx-background-color: linear-gradient(to bottom right, #2d1f17, #4d3428);">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <!-- En-tête avec titre -->
+    <Label text="📝 Créer une Réclamation"
+           style="-fx-text-fill: #f9c89b; -fx-padding: 10 0 20 0;">
+        <font>
+            <Font name="Georgia Bold" size="32.0"/>
+        </font>
+        <effect>
+            <DropShadow color="#00000080" radius="5.0" spread="0.1"/>
+        </effect>
+    </Label>
+
+    <!-- Formulaire de création -->
+    <GridPane hgap="15" vgap="15" alignment="CENTER">
+        <Label text="Titre:"
+               style="-fx-text-fill: #f9c89b; -fx-font-size: 16px; -fx-font-weight: bold;"
+               GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="titleField"
+                   promptText="Titre de la réclamation"
+                   style="-fx-background-color: #ffffff;
+                          -fx-text-fill: #000000;
+                          -fx-font-size: 16px;
+                          -fx-background-radius: 8px;
+                          -fx-padding: 5px 10px;"
+                   GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Type:"
+               style="-fx-text-fill: #f9c89b; -fx-font-size: 16px; -fx-font-weight: bold;"
+               GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <ComboBox fx:id="typeComboBox"
+                  promptText="Sélectionnez un type"
+                  style="-fx-background-color: #ffffff;
+                         -fx-text-fill: #000000;
+                         -fx-font-size: 16px;
+                         -fx-background-radius: 8px;
+                         -fx-padding: 5px 10px;"
+                  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Description:"
+               style="-fx-text-fill: #f9c89b; -fx-font-size: 16px; -fx-font-weight: bold;"
+               GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <HBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextArea fx:id="descriptionArea"
+                      promptText="Description de la réclamation"
+                      wrapText="true"
+                      prefRowCount="5"
+                      style="-fx-background-color: #ffffff;
+                             -fx-text-fill: #000000;
+                             -fx-font-size: 16px;
+                             -fx-background-radius: 8px;
+                             -fx-padding: 5px 10px;"/>
+            <Button fx:id="micButton" text="🎤" onAction="#handleVoiceToText"
+                    style="-fx-font-size: 18px; -fx-background-color: #e1701a; -fx-background-radius: 50%; -fx-text-fill: #fff3e0;"/>
+        </HBox>
+
+    
+    </GridPane>
+
+    <!-- Boutons d'action -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="💾 Créer"
+                onAction="#createReclamation"
+                prefHeight="45.0" prefWidth="150.0"
+                style="-fx-background-color: #e1701a;
+                       -fx-text-fill: #fff3e0;
+                       -fx-font-size: 16px;
+                       -fx-background-radius: 12px;
+                       -fx-font-weight: bold;
+                       -fx-cursor: hand;"
+                styleClass="animated-button,create-button">
+            <effect>
+                <DropShadow color="#00000080" radius="8.0" spread="0.15"/>
+            </effect>
+        </Button>
+
+        <Button text="↩️ Annuler"
+                onAction="#goBackToHome"
+                prefHeight="45.0" prefWidth="150.0"
+                style="-fx-background-color: #a0522d;
+                       -fx-text-fill: #ffe0bd;
+                       -fx-font-size: 16px;
+                       -fx-background-radius: 12px;
+                       -fx-font-weight: bold;
+                       -fx-cursor: hand;"
+                styleClass="animated-button,view-button">
+            <effect>
+                <DropShadow color="#00000080" radius="8.0" spread="0.15"/>
+            </effect>
+        </Button>
+    </HBox>
+
+    <!-- Pied de page -->
+    <Label text="© 2025 Wings solutions"
+           style="-fx-text-fill: #d3a27f; -fx-font-style: italic;">
+        <font>
+            <Font name="Georgia" size="14.0"/>
+        </font>
+    </Label>
+</VBox>

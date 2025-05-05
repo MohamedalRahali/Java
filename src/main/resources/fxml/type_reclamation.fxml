@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.DropShadow?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gui.TypeReclamationController"
+      style="-fx-background-color: linear-gradient(to bottom right, #2d1f17, #4d3428);">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <!-- En-tête avec titre -->
+    <Label text="⚙️ Gestion des Types de Réclamation"
+           style="-fx-text-fill: #f9c89b; -fx-padding: 10 0 20 0;">
+        <font>
+            <Font name="Georgia Bold" size="32.0"/>
+        </font>
+        <effect>
+            <DropShadow color="#00000080" radius="5.0" spread="0.1"/>
+        </effect>
+    </Label>
+
+    <!-- Formulaire d'ajout -->
+    <HBox spacing="10" alignment="CENTER">
+        <TextField fx:id="typeNameField"
+                   promptText="Nom du type"
+                   prefWidth="200.0" prefHeight="40.0"
+                   style="-fx-background-color: #ffffff;
+                          -fx-text-fill: #000000;
+                          -fx-font-size: 16px;
+                          -fx-background-radius: 8px;
+                          -fx-padding: 5px 10px;"/>
+
+        <Button text="➕ Ajouter"
+                onAction="#handleAddType"
+                prefHeight="40.0" prefWidth="100.0"
+                style="-fx-background-color: #e1701a;
+                       -fx-text-fill: #fff3e0;
+                       -fx-font-size: 16px;
+                       -fx-background-radius: 8px;
+                       -fx-font-weight: bold;">
+            <effect>
+                <DropShadow color="#00000080" radius="8.0" spread="0.15"/>
+            </effect>
+        </Button>
+    </HBox>
+
+    <!-- Liste des types -->
+    <ListView fx:id="typeListView"
+              prefWidth="400.0" prefHeight="300.0"
+              style="-fx-background-color: #ffffff;
+                     -fx-background-radius: 8px;
+                     -fx-padding: 10px;">
+        <effect>
+            <DropShadow color="#00000040" radius="5.0" spread="0.1"/>
+        </effect>
+    </ListView>
+
+    <!-- Boutons d'action -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="✏️ Modifier"
+                onAction="#handleModifyType"
+                prefHeight="45.0" prefWidth="150.0"
+                style="-fx-background-color: #e1701a;
+                       -fx-text-fill: #fff3e0;
+                       -fx-font-size: 16px;
+                       -fx-background-radius: 12px;
+                       -fx-font-weight: bold;">
+            <effect>
+                <DropShadow color="#00000080" radius="8.0" spread="0.15"/>
+            </effect>
+        </Button>
+
+        <Button text="🗑️ Supprimer"
+                onAction="#handleDeleteType"
+                prefHeight="45.0" prefWidth="150.0"
+                style="-fx-background-color: #a0522d;
+                       -fx-text-fill: #ffe0bd;
+                       -fx-font-size: 16px;
+                       -fx-background-radius: 12px;
+                       -fx-font-weight: bold;">
+            <effect>
+                <DropShadow color="#00000080" radius="8.0" spread="0.15"/>
+            </effect>
+        </Button>
+
+        <Button text="↩️ Retour"
+                onAction="#goBackToHome"
+                prefHeight="45.0" prefWidth="150.0"
+                style="-fx-background-color: #a0522d;
+                       -fx-text-fill: #ffe0bd;
+                       -fx-font-size: 16px;
+                       -fx-background-radius: 12px;
+                       -fx-font-weight: bold;">
+            <effect>
+                <DropShadow color="#00000080" radius="8.0" spread="0.15"/>
+            </effect>
+        </Button>
+    </HBox>
+
+    <!-- Pied de page -->
+    <Label text="© 2025 Wings solutions"
+           style="-fx-text-fill: #d3a27f; -fx-font-style: italic;">
+        <font>
+            <Font name="Georgia" size="14.0"/>
+        </font>
+    </Label>
+
+    <!-- Styles CSS -->
+    <style>
+        /* Styles généraux */
+        .root {
+            -fx-font-family: 'Georgia', serif;
+        }
+
+        /* Style de la ListView */
+        .list-view {
+            -fx-background-color: #ffffff;
+            -fx-font-size: 16px;
+            -fx-font-weight: bold;
+        }
+
+        .list-view .list-cell {
+            -fx-background-color: #ffffff;
+            -fx-text-fill: #000000;
+            -fx-font-size: 16px;
+            -fx-font-weight: bold;
+            -fx-padding: 15px;
+            -fx-border-color: #cccccc;
+            -fx-border-width: 0 0 1 0;
+        }
+
+        .list-view .list-cell:odd {
+            -fx-background-color: #f5f5f5;
+        }
+
+        .list-view .list-cell:selected {
+            -fx-background-color: #e1701a;
+            -fx-text-fill: #ffffff;
+        }
+    </style>
+</VBox> 

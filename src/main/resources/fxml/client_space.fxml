@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.ClientSpaceController"
+            prefHeight="600.0" prefWidth="800.0"
+            style="-fx-background-color: linear-gradient(to bottom right, #2d1f17, #4d3428);">
+
+    <children>
+        <!-- En-tête -->
+        <VBox alignment="CENTER" layoutX="0.0" layoutY="10.0" prefWidth="800.0" spacing="15.0">
+            <Label text="👤 Espace Client - Ajouter une réclamation"
+                   style="-fx-text-fill: #f9c89b; -fx-padding: 10 0 20 0;">
+                <font>
+                    <Font name="Georgia Bold" size="32.0"/>
+                </font>
+                <effect>
+                    <DropShadow color="#00000080" radius="5.0" spread="0.1"/>
+                </effect>
+            </Label>
+        </VBox>
+
+        <!-- Formulaire de réclamation -->
+        <VBox alignment="CENTER" layoutX="200.0" layoutY="100.0" spacing="20.0" prefWidth="400.0">
+            <!-- Champ Titre -->
+            <TextField fx:id="titleField" promptText="Titre de la réclamation"
+                      prefHeight="40.0" prefWidth="400.0"
+                      style="-fx-background-color: #fff3e0;
+                             -fx-text-fill: #2d1f17;
+                             -fx-font-size: 14px;
+                             -fx-background-radius: 8px;"/>
+
+            <!-- Champ Description -->
+            <TextArea fx:id="descriptionField" promptText="Description de la réclamation"
+                     prefHeight="150.0" prefWidth="400.0"
+                     style="-fx-background-color: #fff3e0;
+                            -fx-text-fill: #2d1f17;
+                            -fx-font-size: 14px;
+                            -fx-background-radius: 8px;"/>
+
+            <!-- Liste déroulante Type -->
+            <ComboBox fx:id="typeComboBox" promptText="Type de réclamation"
+                     prefHeight="40.0" prefWidth="400.0"
+                     style="-fx-background-color: #fff3e0;
+                            -fx-text-fill: #2d1f17;
+                            -fx-font-size: 14px;
+                            -fx-background-radius: 8px;"/>
+
+            <!-- Bouton Soumettre -->
+            <Button text="Soumettre la réclamation"
+                    onAction="#handleSubmitReclamation"
+                    prefHeight="50.0" prefWidth="400.0"
+                    style="-fx-background-color: #e1701a;
+                           -fx-text-fill: #fff3e0;
+                           -fx-font-size: 16px;
+                           -fx-background-radius: 12px;
+                           -fx-font-weight: bold;
+                           -fx-cursor: hand;">
+                <effect>
+                    <DropShadow color="#00000080" radius="8.0" spread="0.15"/>
+                </effect>
+            </Button>
+        </VBox>
+
+        <!-- Liste des réclamations existantes -->
+        <VBox fx:id="reclamationsContainer" 
+              layoutX="200.0" layoutY="450.0" 
+              prefWidth="400.0" spacing="10.0"
+              style="-fx-background-color: transparent;">
+            <Label text="Mes réclamations" 
+                   style="-fx-text-fill: #f9c89b; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+        </VBox>
+
+        <!-- Bouton Retour -->
+        <Button text="⬅️ Retour"
+                onAction="#handleBack"
+                layoutX="20.0" layoutY="20.0"
+                style="-fx-background-color: #a0522d;
+                       -fx-text-fill: #ffe0bd;
+                       -fx-font-size: 14px;
+                       -fx-background-radius: 8px;
+                       -fx-font-weight: bold;
+                       -fx-cursor: hand;">
+            <effect>
+                <DropShadow color="#00000080" radius="5.0" spread="0.1"/>
+            </effect>
+        </Button>
+    </children>
+
+    <!-- Styles CSS -->
+    <stylesheets>
+        <fx:include source="../styles/styles.css"/>
+    </stylesheets>
+</AnchorPane> 

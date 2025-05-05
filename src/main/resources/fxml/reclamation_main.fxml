@@ -1,0 +1,6 @@
+<HBox spacing="10" alignment="CENTER_LEFT">
+    <Button text="Ajouter" onAction="#ajouterReclamation" styleClass="btn-primary"/>
+    <Button text="Modifier" onAction="#modifierReclamation" styleClass="btn-secondary"/>
+    <Button text="Supprimer" onAction="#supprimerReclamation" styleClass="btn-danger"/>
+    <Button fx:id="btnVerifyFingerprint" text="Vérifier Empreinte" styleClass="btn-info"/>
+</HBox> 
