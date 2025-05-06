@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.paint.Color?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+      fx:controller="esprit.tn.controllers.CategorieController"
+      stylesheets="@styles.css">
+
+    <top>
+        <HBox alignment="CENTER" 
+              style="-fx-background-color: #f8f9fa; -fx-padding: 20;">
+    <Label text="Ajouter une Catégorie" 
+           styleClass="form-title" />
+        </HBox>
+    </top>
+
+    <center>
+        <VBox styleClass="form-content" 
+              style="-fx-background-color: white; -fx-background-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+    <GridPane vgap="10" hgap="10">
+                <Label text="Nom" 
+               styleClass="field-label"
+               GridPane.columnIndex="0" 
+               GridPane.rowIndex="0"/>
+                <TextField fx:id="libelleField" 
+                  styleClass="form-field"
+                  GridPane.columnIndex="1" 
+                  GridPane.rowIndex="0"/>
+                <Label text="Entrez le nom de la catégorie" 
+                       styleClass="field-hint" 
+                       GridPane.columnIndex="1" 
+                       GridPane.rowIndex="1"/>
+
+                <Label text="Description" 
+               styleClass="field-label"
+               GridPane.columnIndex="0" 
+                       GridPane.rowIndex="2"/>
+        <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <TextArea fx:id="descriptionField" 
+                 styleClass="form-field"
+                     prefWidth="300" 
+                     prefHeight="100" />
+
+        </HBox>
+                <Label text="Entrez la description de la catégorie" 
+                       styleClass="field-hint" 
+                 GridPane.columnIndex="1" 
+                       GridPane.rowIndex="3"/>
+    </GridPane>
+
+    <HBox alignment="CENTER_RIGHT" 
+          spacing="15" 
+                  style="-fx-padding: 20 0 0 0;">
+
+
+    </HBox>
+</VBox>
+    </center>
+</BorderPane>

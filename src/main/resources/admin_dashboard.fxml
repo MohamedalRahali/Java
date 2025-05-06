@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.controllers.AdminDashboardController">
+
+    <!-- Center: Main Content -->
+    <center>
+        <SplitPane dividerPositions="0.5">
+            <!-- Left: Products Table -->
+            <VBox spacing="10" style="-fx-padding: 20;">
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Gestion des Produits" />
+                <TableView fx:id="produitsTable" prefHeight="400">
+                    <columns>
+                        <TableColumn fx:id="titreColumn" prefWidth="150" text="Titre" />
+                        <TableColumn fx:id="prixColumn" prefWidth="100" text="Prix (€)" />
+                        <TableColumn fx:id="descriptionColumn" prefWidth="200" text="Description" />
+                    </columns>
+                </TableView>
+                <Button fx:id="deleteProductButton" onAction="#handleDeleteProduct" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Supprimer Produit" />
+            </VBox>
+
+            <!-- Right: Categories Table -->
+            <VBox spacing="10" style="-fx-padding: 20;">
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Gestion des Catégories" />
+                <TableView fx:id="categoriesTable" prefHeight="400">
+                    <columns>
+                        <TableColumn fx:id="libelleColumn" prefWidth="150" text="Libellé" />
+                        <TableColumn fx:id="categorieDescriptionColumn" prefWidth="200" text="Description" />
+                    </columns>
+                </TableView>
+                <Button fx:id="deleteCategoryButton" onAction="#handleDeleteCategory" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Supprimer Catégorie" />
+            </VBox>
+        </SplitPane>
+    </center>
+
+    <!-- Right: Navigation and Logout -->
+    <right>
+        <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #f4f4f4; -fx-border-color: #cccccc; -fx-border-width: 0 0 0 1;">
+            <Label fx:id="welcomeLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+            <Button fx:id="logoutButton" onAction="#handleLogout" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-pref-width: 150;" text="Se déconnecter" />
+        </VBox>
+    </right>
+</BorderPane>

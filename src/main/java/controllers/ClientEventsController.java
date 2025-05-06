@@ -211,7 +211,7 @@ public class ClientEventsController {
 
     private double[] getCoordinatesFromLocation(String location) {
         if (location == null) {
-            showError("Invalid Location", "The provided location is empty or null.");
+            // showError("Invalid Location", "The provided location is empty or null.");
             return null;
         }
         // Simulation de coordonnées pour les villes tunisiennes
@@ -225,7 +225,7 @@ public class ClientEventsController {
             default:
                 String errorMsg = "Unknown location for coordinates: '" + location + "'";
                 System.err.println(errorMsg);
-                showError("Invalid Location", "Could not find coordinates for: " + location + ". Please enter a valid Tunisian city.");
+                // showError("Invalid Location", "Could not find coordinates for: " + location + ". Please enter a valid Tunisian city.");
                 return null;
         }
     }

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.ListController"
+      spacing="30"
+      style="-fx-padding: 40; -fx-background-color: #f5f5f5;"
+      stylesheets="@styles.css">
+
+    <Label text="Liste des Produits" 
+           style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 20 0;" />
+
+    <HBox spacing="30" 
+          alignment="CENTER_RIGHT" 
+          style="-fx-padding: 0 0 20 0;">
+        <Button text="Ajouter au Panier" 
+                styleClass="btn-success" 
+                onAction="#handleAddToCart" 
+                prefWidth="250" 
+                prefHeight="60" 
+                style="-fx-font-size: 18px; -fx-background-radius: 5;">
+            <graphic>
+                <ImageView fitHeight="32" fitWidth="32">
+                    <Image url="@images/cart.png" />
+                </ImageView>
+            </graphic>
+        </Button>
+    </HBox>
+
+    <TableView fx:id="produitTable" 
+              styleClass="data-table" 
+              prefHeight="500"
+              style="-fx-background-radius: 5; -fx-border-radius: 5;">
+        <columns>
+            <TableColumn fx:id="titreColumn" 
+                        text="Titre" 
+                        styleClass="table-column" 
+                        prefWidth="400"/>
+            <TableColumn fx:id="prixColumn" 
+                        text="Prix" 
+                        styleClass="table-column" 
+                        prefWidth="200"/>
+            <TableColumn fx:id="categorieColumn" 
+                        text="Catégorie" 
+                        styleClass="table-column" 
+                        prefWidth="300"/>
+            <TableColumn fx:id="statutColumn" 
+                        text="Statut" 
+                        styleClass="table-column" 
+                        prefWidth="200"/>
+        </columns>
+    </TableView>
+
+    <HBox alignment="CENTER_RIGHT" 
+          spacing="30" 
+          style="-fx-padding: 30 0 0 0;">
+        <Button onAction="#handleBack" 
+                styleClass="btn-secondary" 
+                text="Retour" 
+                prefWidth="200" 
+                prefHeight="50" 
+                style="-fx-font-size: 18px; -fx-background-radius: 5;" />
+    </HBox>
+</VBox>

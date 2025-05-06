@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="esprit.tn.controllers.PanierController"
+      spacing="20" style="-fx-padding: 40; -fx-background-color: #f5f5f5;"
+>
+    <Label text="Votre Panier" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+    <ScrollPane fitToWidth="true" styleClass="edge-to-edge" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+        <VBox fx:id="cartItemsVBox" spacing="10" style="-fx-padding: 10;">
+            <!-- Cart items will be added dynamically here -->
+        </VBox>
+    </ScrollPane>
+
+    <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 10; -fx-background-color: white; -fx-background-radius: 5; -fx-border-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 5);">
+        <Label text="Total:" style="-fx-font-size: 18px; -fx-text-fill: #34495e; -fx-font-weight: bold;" />
+        <Label fx:id="totalPriceLabel" text="0.00 €" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="payWithStripeButton" onAction="#handlePayWithStripe" text="Payer avec Stripe" style="-fx-background-color: #6772e5; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 5;" prefHeight="40" prefWidth="200" />
+    </HBox>
+</VBox>

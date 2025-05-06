@@ -34,6 +34,16 @@ public class AdminBarController {
     }
 
     @FXML
+    private void goToBlogView() throws IOException {
+        navigate("/fxml/AfficherBlogs.fxml", "Blogs");
+    }
+
+    @FXML
+    private void goToAjouterFormation() throws IOException {
+        navigate("/fxml/AjouterFormation.fxml", "Ajouter Formation");
+    }
+
+    @FXML
     private void logout() throws IOException {
         navigate("/fxml/login.fxml", "Login");
     }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox alignment="CENTER" spacing="30" style="-fx-background-color: #f5f7fa; -fx-padding: 30 0 0 0;"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.CommentController">
+
+    <fx:include fx:id="adminBar" source="AdminBar.fxml" />
+
+    <VBox maxWidth="700" spacing="24" alignment="TOP_CENTER" style="-fx-background-color: #fff; -fx-background-radius: 18; -fx-padding: 32 40 32 40; -fx-effect: dropshadow(gaussian, #31406022, 10, 0, 0, 0);">
+        <HBox spacing="16" alignment="CENTER_LEFT">
+            <Label text="Commentaires" style="-fx-font-size: 26px; -fx-font-family: 'Segoe UI', 'Arial'; -fx-font-weight: bold; -fx-text-fill: #314060;"/>
+        </HBox>
+        <VBox fx:id="commentsContainer" spacing="12" style="-fx-background-color: #f8fafc; -fx-background-radius: 10; -fx-padding: 18;">
+            <!-- Les comments seront ajoutés dynamiquement ici -->
+        </VBox>
+        <VBox spacing="10" style="-fx-background-color: #f8fafc; -fx-background-radius: 10; -fx-padding: 18;">
+            <Label text="Ajouter un commentaire" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <TextArea fx:id="commentTextArea"
+                      promptText="Écrivez votre commentaire ici..."
+                      prefRowCount="3"
+                      wrapText="true"
+                      style="-fx-background-color: #fff; -fx-background-radius: 8;"/>
+            <Button text="Publier"
+                    onAction="#handleAddComment"
+                    style="-fx-background-color: #00b4d8; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; min-width: 120;"/>
+        </VBox>
+    </VBox>
+
+</VBox>

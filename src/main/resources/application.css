@@ -1,0 +1,63 @@
+/* Style général */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-base: #ecf0f1;
+}
+
+/* Boutons */
+.button {
+    -fx-padding: 8 15 8 15;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+}
+
+.button:hover {
+    -fx-opacity: 0.9;
+}
+
+/* Champs de texte */
+.text-field, .text-area {
+    -fx-background-radius: 5;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+}
+
+.text-field:focused, .text-area:focused {
+    -fx-border-color: #3498db;
+}
+
+/* ListView */
+.list-view {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.list-cell {
+    -fx-padding: 10 15;
+    -fx-border-color: #ecf0f1;
+    -fx-border-width: 0 0 1 0;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #f1f9fe;
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+/* Notifications */
+.notification {
+    -fx-padding: 10 15;
+    -fx-background-radius: 5;
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.notification.success {
+    -fx-background-color: #2ecc71;
+}

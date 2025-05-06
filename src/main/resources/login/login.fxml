@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="esprit.tn.controllers.LoginController"
+      spacing="30" style="-fx-padding: 40; -fx-background-color: #f5f5f5;"
+      alignment="CENTER">
+
+    <Label text="Connexion" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 20 0;" />
+
+    <VBox spacing="10" style="-fx-padding: 20; -fx-background-color: white; -fx-background-radius: 5; -fx-border-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 10);" maxWidth="450">
+        <Label text="Nom d'utilisateur" style="-fx-font-size: 14px; -fx-text-fill: #34495e;" />
+        <TextField fx:id="usernameField" promptText="Entrez votre nom d'utilisateur" styleClass="text-field" prefHeight="40" />
+
+        <Label text="Mot de passe" style="-fx-font-size: 14px; -fx-text-fill: #34495e; -fx-padding: 15 0 0 0;" />
+        <PasswordField fx:id="passwordField" promptText="Entrez votre mot de passe" styleClass="text-field" prefHeight="40" />
+
+        <HBox alignment="CENTER_RIGHT" spacing="15" style="-fx-padding: 25 0 0 0;">
+            <Button fx:id="registerButton" onAction="#handleRegister" text="S'inscrire" styleClass="btn-secondary"
+                    prefWidth="120" prefHeight="40" style="-fx-font-size: 14px; -fx-background-radius: 5;" />
+            <Button fx:id="loginButton" onAction="#handleLogin" text="Se connecter" styleClass="btn-primary"
+                    prefWidth="150" prefHeight="40" style="-fx-font-size: 14px; -fx-background-radius: 5;">
+                <graphic>
+
+                </graphic>
+            </Button>
+        </HBox>
+    </VBox>
+
+    <HBox alignment="CENTER" style="-fx-padding: 30 0 0 0;">
+        <Label text="© 2023 - Tous droits réservés" style="-fx-text-fill: #7f8c8d; -fx-font-size: 12px;" />
+    </HBox>
+</VBox>

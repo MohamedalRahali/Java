@@ -43,6 +43,11 @@ public class UserBarController {
         navigate("/fxml/login.fxml", "Login");
     }
 
+    @FXML
+    private void goToUserAfficherBlogs(ActionEvent event) throws IOException {
+        navigate("/fxml/UserAfficherBlogs.fxml", "Blogs Utilisateur");
+    }
+
     private void navigate(String fxmlPath, String title) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
         Parent root = loader.load();

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterFormation" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #f8fafc;">
+    <children>
+        <!-- Admin Top Bar -->
+        <fx:include fx:id="adminBar" source="AdminBar.fxml" />
+
+        <!-- Menu gauche -->
+        <VBox prefHeight="660.0" prefWidth="200.0" style="-fx-background-color: #87CEEB;" layoutY="40.0">
+            <children>
+                <Pane prefHeight="95.0">
+                    <ImageView fitHeight="53.0" fitWidth="69.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../Projet/Images/logo.png" />
+                        </image>
+                    </ImageView>
+                </Pane>
+                <Button stylesheets="@/Projet/CSS/app.css" text="User Table" textFill="#3dbcbe" onAction="#goToUserView">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../Projet/Icons/icons8-table-50.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button stylesheets="@/Projet/CSS/app.css" text="Formation" textFill="#3dbcbe" onAction="#goToAjouterFormation">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../Projet/Icons/icons8-chapeau-de-diplôme-50.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button stylesheets="@/Projet/CSS/app.css" text="Catégories" textFill="#3dbcbe" alignment="CENTER" onAction="#goToCategorieView">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../Projet/Icons/icons8-classer-par-catégories-50.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </VBox>
+
+        <!-- Main Content Area under Top Bar and Sidebar -->
+        <VBox spacing="20" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" AnchorPane.bottomAnchor="0.0" style="-fx-padding: 30 40 30 40;">
+            <HBox alignment="CENTER_RIGHT" spacing="12" style="-fx-padding: 0 0 20 0;">
+                <Label text="Ajouter une Formation" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #314060;"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <GridPane hgap="20" vgap="16" alignment="CENTER_LEFT" style="-fx-background-color: #fff; -fx-background-radius: 12; -fx-padding: 36 36 36 36; -fx-effect: dropshadow(gaussian, #31406022, 8, 0, 0, 0);">
+                <Label text="Titre:" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TextField fx:id="titre" promptText="Titre" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                <Label text="Description:" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TextField fx:id="description" promptText="Description" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                <Label text="Prix:" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TextField fx:id="prix" promptText="Prix" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+                <Label text="Places disponibles:" GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TextField fx:id="places_disponibles" promptText="Places disponibles" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+                <Label text="Category:" GridPane.rowIndex="4" GridPane.columnIndex="0" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <ComboBox fx:id="categorieComboBox" promptText="Select Category" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                <Button fx:id="ajouterBtn" text="Ajouter" GridPane.rowIndex="5" GridPane.columnIndex="1" style="-fx-background-color: #00b4d8; -fx-text-fill: #fff; -fx-font-size: 16px; -fx-font-weight: bold;" onAction="#save" />
+                <Button fx:id="displayBtn" text="Display" GridPane.rowIndex="5" GridPane.columnIndex="2" style="-fx-background-color: #00b4d8; -fx-text-fill: #fff; -fx-font-size: 16px; -fx-font-weight: bold;" onAction="#display" />
+            </GridPane>
+        </VBox>
+    </children>
+</AnchorPane>

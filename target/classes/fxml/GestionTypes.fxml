@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GestionTypesController">
+    <children>
+        <fx:include fx:id="adminBar" source="AdminBar.fxml" />
+        <VBox alignment="CENTER" spacing="30" AnchorPane.topAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <HBox spacing="0" alignment="CENTER">
+                <!-- Sidebar -->
+                <VBox style="-fx-background-color: #00b4d8; -fx-background-radius: 0 24 24 0; -fx-padding: 36 0 0 0;" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <VBox alignment="CENTER" styleClass="logo-container" prefHeight="100.0">
+                        <FontIcon iconLiteral="fas-layer-group" iconSize="40" styleClass="logo-icon"/>
+                    </VBox>
+                    <VBox spacing="8" style="-fx-padding: 20 0 0 0;">
+                        <Button styleClass="nav-button" onAction="#handleTypesAction" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 16px; -fx-font-weight: bold;">
+                            <graphic>
+                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                    <FontIcon iconLiteral="fas-layer-group" iconSize="18"/>
+                                    <Label text="Types" styleClass="nav-label" style="-fx-text-fill: #fff;"/>
+                                </HBox>
+                            </graphic>
+                        </Button>
+                        <Button styleClass="nav-button" onAction="#handleBlogsAction" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 16px; -fx-font-weight: bold;">
+                            <graphic>
+                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                    <FontIcon iconLiteral="fas-blog" iconSize="18"/>
+                                    <Label text="Blogs" styleClass="nav-label" style="-fx-text-fill: #fff;"/>
+                                </HBox>
+                            </graphic>
+                        </Button>
+                    </VBox>
+                </VBox>
+                <!-- Main Content -->
+                <VBox maxWidth="900" spacing="24" alignment="TOP_CENTER" style="-fx-background-color: #fff; -fx-background-radius: 18; -fx-padding: 32 40 32 40; -fx-effect: dropshadow(gaussian, #31406022, 10, 0, 0, 0);">
+                    <HBox alignment="CENTER_LEFT" spacing="16">
+                        <FontIcon iconLiteral="fas-layer-group" iconSize="28" styleClass="header-icon"/>
+                        <VBox>
+                            <Label text="Gestion des Types" style="-fx-font-size: 28px; -fx-font-family: 'Segoe UI', 'Arial'; -fx-font-weight: bold; -fx-text-fill: #314060;"/>
+                            <Label text="Gérez les types de blogs" style="-fx-font-size: 15px; -fx-text-fill: #888;"/>
+                        </VBox>
+                    </HBox>
+                    <!-- Form Container -->
+                    <VBox spacing="18">
+                        <HBox styleClass="form-group" alignment="CENTER_LEFT" spacing="10">
+                            <FontIcon iconLiteral="fas-tag" styleClass="form-icon"/>
+                            <Label text="Libellé du Type *" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                            <TextField fx:id="libelleField" promptText="Entrez le libellé du type" HBox.hgrow="ALWAYS"/>
+                        </HBox>
+                        <!-- Action Buttons -->
+                        <HBox spacing="16" alignment="CENTER_RIGHT">
+                            <Button onAction="#handleAdd" style="-fx-background-color: #00b4d8; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; min-width: 120;">
+                                <graphic>
+                                    <HBox spacing="5" alignment="CENTER">
+                                        <FontIcon iconLiteral="fas-plus"/>
+                                        <Label text="Ajouter" style="-fx-text-fill: white;"/>
+                                    </HBox>
+                                </graphic>
+                            </Button>
+                            <Button onAction="#handleModify" style="-fx-background-color: #f5cfa3; -fx-text-fill: #314060; -fx-font-weight: bold; -fx-background-radius: 8; min-width: 120;">
+                                <graphic>
+                                    <HBox spacing="5" alignment="CENTER">
+                                        <FontIcon iconLiteral="fas-edit"/>
+                                        <Label text="Modifier" style="-fx-text-fill: #314060;"/>
+                                    </HBox>
+                                </graphic>
+                            </Button>
+                            <Button onAction="#handleDelete" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; min-width: 120;">
+                                <graphic>
+                                    <HBox spacing="5" alignment="CENTER">
+                                        <FontIcon iconLiteral="fas-trash"/>
+                                        <Label text="Supprimer" style="-fx-text-fill: white;"/>
+                                    </HBox>
+                                </graphic>
+                            </Button>
+                            <Button onAction="#handleClear" style="-fx-background-color: #888; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; min-width: 120;">
+                                <graphic>
+                                    <HBox spacing="5" alignment="CENTER">
+                                        <FontIcon iconLiteral="fas-broom"/>
+                                        <Label text="Vider" style="-fx-text-fill: white;"/>
+                                    </HBox>
+                                </graphic>
+                            </Button>
+                        </HBox>
+                    </VBox>
+                    <!-- Types List -->
+                    <ListView fx:id="typesListView" style="-fx-background-color: #f8fafc; -fx-background-radius: 10;" VBox.vgrow="ALWAYS"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>

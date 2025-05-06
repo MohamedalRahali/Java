@@ -1,0 +1,108 @@
+/* Gradient Overlay for Background Image */
+.gradient-overlay {
+    -fx-fill: linear-gradient(to bottom right, rgba(75, 0, 130, 0.7), rgba(0, 183, 235, 0.7));
+}
+
+/* Title Label */
+.title-label {
+    -fx-font-family: "Arial";
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 2, 2);
+}
+
+/* Card Container */
+.card {
+    -fx-background-color: rgba(255, 255, 255, 0.95);
+    -fx-background-radius: 10;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);
+}
+
+/* Form Labels */
+.form-label {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-text-fill: #333;
+}
+
+/* Form Fields */
+.form-field, .form-combo, .form-list {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+    -fx-font-family: "Arial";
+}
+
+/* Table Styling */
+.custom-table {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5;
+}
+
+.custom-table .column-header {
+    -fx-background-color: #0078D7;
+    -fx-text-fill: white;
+}
+
+/* Buttons */
+.btn-primary {
+    -fx-background-color: #0078D7;
+    -fx-text-fill: white;
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 8 15;
+    -fx-cursor: hand;
+}
+
+.btn-danger {
+    -fx-background-color: #D13438;
+    -fx-text-fill: white;
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 8 15;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover, .btn-danger:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 2, 2);
+}
+
+/* Music Control Bar */
+.music-control-bar {
+    -fx-background-color: rgba(0, 0, 0, 0.7);
+    -fx-background-radius: 5;
+    -fx-padding: 5;
+}
+
+.btn-music {
+    -fx-background-color: #00B7EB;
+    -fx-text-fill: white;
+    -fx-font-family: "Arial";
+    -fx-background-radius: 5;
+    -fx-padding: 5 10;
+    -fx-cursor: hand;
+}
+
+.btn-music:hover {
+    -fx-background-color: #0096C7;
+}
+
+/* Volume Slider */
+.volume-slider {
+    -fx-pref-width: 100px;
+}
+
+/* Loading Indicator */
+.loading-indicator {
+    -fx-progress-color: #0078D7;
+}

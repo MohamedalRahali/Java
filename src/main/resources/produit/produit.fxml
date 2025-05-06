@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="rootPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esprit.tn.controllers.ProduitController">
+
+    <!-- Top Section: Filters and Refresh -->
+    <top>
+        <VBox spacing="10" style="-fx-background-color: #f4f4f4; -fx-padding: 10;">
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <Label style="-fx-font-weight: bold;" text="Rechercher :" />
+                <TextField fx:id="searchField" prefWidth="200" promptText="Rechercher un produit..." />
+                <Label style="-fx-font-weight: bold;" text="Catégorie :" />
+                <ComboBox fx:id="categorieFilter" prefWidth="150" />
+                <Label fx:id="prixLabel" style="-fx-font-weight: bold;" />
+                <Slider fx:id="prixFilter" max="1000" min="0" prefWidth="200" showTickLabels="true" showTickMarks="true" value="1000" />
+                <Button fx:id="refreshButton" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Actualiser" />
+                <Button fx:id="toggleStatsButton" onAction="#showStatisticsPopup" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="Statistiques" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Center Section: Table and Form -->
+    <center>
+        <SplitPane dividerPositions="0.7">
+            <!-- Left: Table of Products -->
+            <VBox spacing="10" style="-fx-padding: 10;">
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Liste des Produits" />
+                <TableView fx:id="produitTable" prefHeight="400">
+                    <columns>
+                        <TableColumn prefWidth="150" text="Titre" />
+                        <TableColumn prefWidth="100" text="Prix" />
+                        <TableColumn prefWidth="120" text="Artiste" />
+                        <TableColumn prefWidth="100" text="Statut" />
+                        <TableColumn prefWidth="120" text="Catégorie" />
+                        <TableColumn prefWidth="80" text="Image" />
+                        <TableColumn prefWidth="56.79998779296875" text="Actions" />
+                    </columns>
+                </TableView>
+                <Button fx:id="exportPdfButton" onAction="#exportPDF" style="-fx-background-color: #FF5722; -fx-text-fill: white;" text="Exporter en PDF" />
+            </VBox>
+
+            <!-- Right: Form for Adding/Editing Products -->
+            <VBox prefHeight="530.0" prefWidth="512.0" spacing="15" style="-fx-padding: 10; -fx-background-color: #fafafa;">
+                <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Ajouter/Modifier un Produit" />
+                <GridPane hgap="10" vgap="10">
+                    <Label text="Titre :" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <TextField fx:id="titreField" promptText="Titre du produit" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                    <Label text="Description :" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <TextArea fx:id="descriptionArea" prefHeight="100" promptText="Description du produit" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                    <Label text="Nom de l'Artiste :" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <TextField fx:id="nomArtisteField" promptText="Nom de l'artiste" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                    <Label text="Prix :" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                    <TextField fx:id="prixField" promptText="Prix en DT" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                    <Label text="Statut :" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                    <TextField fx:id="statutField" promptText="Statut (ex. Disponible)" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                    <Label text="Catégorie :" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                    <ComboBox fx:id="categorieCombo" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                    <Label text="Image :" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                    <HBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <TextField fx:id="imageField" prefWidth="150" promptText="Chemin de l'image" />
+                        <Button fx:id="uploadImageButton" onAction="#uploadImage" style="-fx-background-color: #FFC107; -fx-text-fill: white;" text="Uploader" />
+                    </HBox>
+
+                    <ImageView fx:id="imagePreview" fitHeight="100" fitWidth="100" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+               </rowConstraints>
+                </GridPane>
+
+                <HBox alignment="CENTER" spacing="10">
+                    <Button fx:id="addButton" onAction="#handleAjouterProduit" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Ajouter" />
+                    <Button fx:id="updateButton" onAction="#handleModifierProduit" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="Modifier" />
+                    <Button fx:id="clearFormButton" onAction="#clearFields" style="-fx-background-color: #FF5722; -fx-text-fill: white;" text="Effacer" />
+                </HBox>
+            </VBox>
+        </SplitPane>
+    </center>
+
+    <!-- Bottom Section: Music Controls -->
+    <bottom>
+        <HBox alignment="CENTER" spacing="10" style="-fx-background-color: #f4f4f4; -fx-padding: 10;" />
+    </bottom>
+
+    <!-- Overlay for Loading Indicator -->
+    <StackPane fx:id="loadingOverlay" style="-fx-background-color: rgba(0, 0, 0, 0.4);" visible="false">
+        <ProgressIndicator fx:id="loadingIndicator" visible="false" />
+    </StackPane>
+</BorderPane>

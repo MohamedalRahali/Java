@@ -17,6 +17,12 @@
                 <Glow level="0.3"/>
             </effect>
         </Button>
+        <Button text="Blogs" onAction="#goToArtistBlogs"
+                style="-fx-background-color: transparent; -fx-text-fill: #2196F3; -fx-font-size: 14px; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-width: 0 0 2 0;">
+            <effect>
+                <Glow level="0.3"/>
+            </effect>
+        </Button>
         <MenuButton text="Evénements"
                     style="-fx-background-color: transparent; -fx-text-fill: #2196F3; -fx-font-size: 14px; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-width: 0 0 2 0;">
             <items>
