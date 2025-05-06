@@ -5,6 +5,8 @@
 *.p12
 # Ignore credential files
 src/main/resources/credentials/
+src/main/java/controllers/AfficherFormation.java
+src/main/java/controllers/PanierController.java
 src/main/resources/google-credentials.json
 target/classes/credentials/
 target/classes/google-credentials.json
