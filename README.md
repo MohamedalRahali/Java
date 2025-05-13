@@ -125,7 +125,7 @@ src/
 templates/
 public/
 config/
-💻 Installation
+ Installation
 Prérequis :
 PHP >= 8.1
 
